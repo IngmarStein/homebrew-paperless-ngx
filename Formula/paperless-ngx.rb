@@ -6,6 +6,7 @@ class PaperlessNgx < Formula
   url "https://github.com/paperless-ngx/paperless-ngx/archive/refs/tags/v2.16.1.tar.gz"
   sha256 "551149e803961f44da1c447a257f419bc5e95de6f1563e4ddf9e5696a97d5dc9"
   license "GPL-3.0-or-later"
+  revision 1
 
   bottle do
     root_url "https://ghcr.io/v2/ingmarstein/paperless-ngx"
@@ -689,7 +690,7 @@ class PaperlessNgx < Formula
          nltk_data
     end
 
-    static_dir = venv.site_packages/"static"
+    static_dir = var/"paperless-ngx/static"
     python = venv.root/"bin/python"
     chdir "src" do
       with_env(PAPERLESS_STATICDIR: static_dir) do
@@ -722,7 +723,8 @@ class PaperlessNgx < Formula
       PAPERLESS_DATA_DIR="#{var}/paperless-ngx/data"
       PAPERLESS_MEDIA_ROOT="#{var}/paperless-ngx/media"
       PAPERLESS_NLTK_DIR="#{var}/paperless-ngx/nltk_data"
-      PAPERLESS_STATICDIR="#{static_dir}"
+      PAPERLESS_STATICDIR="#{var}/paperless-ngx/static"
+      GRANIAN_WORKERS_KILL_TIMEOUT="60"
       #{"PAPERLESS_CONSUMER_POLLING=10" if OS.mac?}
       #{"OMP_NUM_THREADS=1" if OS.mac?}
     SH
