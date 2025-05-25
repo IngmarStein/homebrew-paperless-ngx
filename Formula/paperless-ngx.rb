@@ -690,7 +690,7 @@ class PaperlessNgx < Formula
       system python_executable,
          "-W", "ignore::RuntimeWarning",
          "-m", "nltk.downloader",
-         "-d", var/"paperless-ngx/nltk_data",
+         "-d", libexec/"nltk_data",
          nltk_data
     end
 
@@ -725,8 +725,8 @@ class PaperlessNgx < Formula
       PAPERLESS_CONSUMPTION_DIR="#{var}/paperless-ngx/consume"
       PAPERLESS_DATA_DIR="#{var}/paperless-ngx/data"
       PAPERLESS_MEDIA_ROOT="#{var}/paperless-ngx/media"
-      PAPERLESS_NLTK_DIR="#{var}/paperless-ngx/nltk_data"
-      PAPERLESS_STATICDIR="#{var}/paperless-ngx/static"
+      PAPERLESS_NLTK_DIR="#{opt_libexec}/nltk_data"
+      PAPERLESS_STATICDIR="#{opt_libexec}/static"
       GRANIAN_WORKERS_KILL_TIMEOUT="60"
       #{"PAPERLESS_CONSUMER_POLLING=10" if OS.mac?}
       #{"OMP_NUM_THREADS=1" if OS.mac?}
@@ -739,14 +739,14 @@ class PaperlessNgx < Formula
     # paperless-webserver service
     webserver_dir = s6_services_dir/"paperless-webserver"
     webserver_dir.mkpath
-    (webserver_dir/"type").write "longrun"
-    (webserver_dir/"up").write "" # Empty file
     (webserver_dir/"run").write <<~EOS
       #!/bin/sh
       set -a
       . "#{etc}/paperless-ngx/paperless.conf"
       set +a
       export PAPERLESS_CONFIGURATION_PATH="#{etc}/paperless-ngx/paperless.conf"
+      echo "Running database migrations..."
+      "#{python_executable}" "#{manage_py_script}" migrate --no-input --skip-checks
       exec "#{granian_executable}" \\
         --interface asgi \\
         --host "${PAPERLESS_INTERFACE:-127.0.0.1}" \\
@@ -757,18 +757,10 @@ class PaperlessNgx < Formula
         "paperless.asgi:application"
     EOS
     (webserver_dir/"run").chmod 0755
-    webserver_deps_dir = webserver_dir/"dependencies.d"
-    webserver_deps_dir.mkpath
-    (webserver_deps_dir/"init-migrations").write ""
-    (webserver_deps_dir/"paperless-worker").write ""
-    (webserver_deps_dir/"paperless-scheduler").write ""
-    (webserver_deps_dir/"paperless-consumer").write ""
 
     # paperless-consumer service
     consumer_dir = s6_services_dir/"paperless-consumer"
     consumer_dir.mkpath
-    (consumer_dir/"type").write "longrun"
-    (consumer_dir/"up").write ""
     (consumer_dir/"run").write <<~EOS
       #!/bin/sh
       set -a
@@ -779,15 +771,10 @@ class PaperlessNgx < Formula
       exec "#{python_executable}" "#{manage_py_script}" document_consumer
     EOS
     (consumer_dir/"run").chmod 0755
-    consumer_deps_dir = consumer_dir/"dependencies.d"
-    consumer_deps_dir.mkpath
-    (consumer_deps_dir/"init-migrations").write ""
 
     # paperless-worker service
     worker_dir = s6_services_dir/"paperless-worker"
     worker_dir.mkpath
-    (worker_dir/"type").write "longrun"
-    (worker_dir/"up").write ""
     (worker_dir/"run").write <<~EOS
       #!/bin/sh
       set -a
@@ -804,15 +791,10 @@ class PaperlessNgx < Formula
         --without-gossip
     EOS
     (worker_dir/"run").chmod 0755
-    worker_deps_dir = worker_dir/"dependencies.d"
-    worker_deps_dir.mkpath
-    (worker_deps_dir/"init-migrations").write ""
 
     # paperless-scheduler service
     scheduler_dir = s6_services_dir/"paperless-scheduler"
     scheduler_dir.mkpath
-    (scheduler_dir/"type").write "longrun"
-    (scheduler_dir/"up").write ""
     (scheduler_dir/"run").write <<~EOS
       #!/bin/sh
       set -a
@@ -825,24 +807,6 @@ class PaperlessNgx < Formula
         --loglevel INFO
     EOS
     (scheduler_dir/"run").chmod 0755
-    scheduler_deps_dir = scheduler_dir/"dependencies.d"
-    scheduler_deps_dir.mkpath
-    (scheduler_deps_dir/"init-migrations").write ""
-
-    # init-migrations service (one-shot)
-    migrations_dir = s6_services_dir/"init-migrations"
-    migrations_dir.mkpath
-    (migrations_dir/"type").write "oneshot"
-    (migrations_dir/"up").write "" # Empty file
-    (migrations_dir/"run").write <<~EOS
-      #!/bin/sh
-      echo "Running Paperless-ngx database migrations..."
-      set -a
-      . "#{etc}/paperless-ngx/paperless.conf"
-      set +a
-      exec "#{python_executable}" "#{manage_py_script}" migrate --no-input --skip-checks
-    EOS
-    (migrations_dir/"run").chmod 0755
 
     # manage.py wrapper
     (buildpath/"paperless-manage").write <<~SH
@@ -862,8 +826,6 @@ class PaperlessNgx < Formula
     mkdir_p (var/"paperless-ngx/media")
     mkdir_p (var/"paperless-ngx/nltk_data")
     mkdir_p (var/"paperless-ngx/tmp")
-
-    ln_sf opt_libexec/"static", var/"paperless-ngx/static"
   end
 
   service do
