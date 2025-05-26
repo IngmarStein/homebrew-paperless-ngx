@@ -21,7 +21,7 @@ brew "<formula>"
 
 Install paperless-ngx:
 
-```
+```shell
 brew install ingmarstein/paperless-ngx/paperless-ngx
 ```
 
@@ -29,7 +29,7 @@ Configure paperless-ngx in `$(brew --prefix)/etc/paperless-ngx/paperless.conf`
 
 Start services:
 
-```
+```shell
 brew services start paperless-ngx
 ```
 

@@ -6,6 +6,7 @@ class PaperlessNgx < Formula
   url "https://github.com/paperless-ngx/paperless-ngx/archive/refs/tags/v2.16.2.tar.gz"
   sha256 "c48a2b2faada40dbbe62de08d4ac48930a7fdd1dddbfe342fc0532207e160310"
   license "GPL-3.0-or-later"
+  revision 1
 
   bottle do
     root_url "https://ghcr.io/v2/ingmarstein/paperless-ngx"
@@ -748,7 +749,7 @@ class PaperlessNgx < Formula
       echo "Running database migrations..."
       "#{python_executable}" "#{manage_py_script}" migrate --no-input --skip-checks
       exec "#{granian_executable}" \\
-        --interface asgi \\
+        --interface asginl \\
         --host "${PAPERLESS_INTERFACE:-127.0.0.1}" \\
         --port "${PAPERLESS_PORT:-8000}" \\
         --workers "${PAPERLESS_WEBSERVER_WORKERS:-2}" \\
