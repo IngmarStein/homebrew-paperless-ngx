@@ -3,10 +3,9 @@ class PaperlessNgx < Formula
 
   desc "Scan, index and archive all your physical documents"
   homepage "https://docs.paperless-ngx.com/"
-  url "https://github.com/paperless-ngx/paperless-ngx/archive/refs/tags/v2.16.2.tar.gz"
-  sha256 "c48a2b2faada40dbbe62de08d4ac48930a7fdd1dddbfe342fc0532207e160310"
+  url "https://github.com/paperless-ngx/paperless-ngx/archive/refs/tags/v2.16.3.tar.gz"
+  sha256 "d23ba8f354bc9b199d86fd363cfe1e93901471b4d45b55b804facaee2bc4aee5"
   license "GPL-3.0-or-later"
-  revision 1
 
   bottle do
     root_url "https://ghcr.io/v2/ingmarstein/paperless-ngx"
@@ -44,6 +43,7 @@ class PaperlessNgx < Formula
   depends_on "ocrmypdf"
   depends_on "pillow"
   depends_on "poppler"
+  depends_on "pycparser"
   depends_on "python@3.13"
   depends_on "qpdf"
   depends_on "s6"
@@ -96,8 +96,8 @@ class PaperlessNgx < Formula
   end
 
   resource "celery" do
-    url "https://files.pythonhosted.org/packages/bf/03/5d9c6c449248958f1a5870e633a29d7419ff3724c452a98ffd22688a1a6a/celery-5.5.2.tar.gz"
-    sha256 "4d6930f354f9d29295425d7a37261245c74a32807c45d764bedc286afd0e724e"
+    url "https://files.pythonhosted.org/packages/bb/7d/6c289f407d219ba36d8b384b42489ebdd0c84ce9c413875a8aae0c85f35b/celery-5.5.3.tar.gz"
+    sha256 "6c972ae7968c2b5281227f01c3a3f984037d21c5129d07bf3550cc2afc6b10a5"
   end
 
   resource "channels" do
@@ -156,8 +156,8 @@ class PaperlessNgx < Formula
   end
 
   resource "django" do
-    url "https://files.pythonhosted.org/packages/10/08/2e6f05494b3fc0a3c53736846034f882b82ee6351791a7815bbb45715d79/django-5.1.9.tar.gz"
-    sha256 "565881bdd0eb67da36442e9ac788bda90275386b549070d70aee86327781a4fc"
+    url "https://files.pythonhosted.org/packages/73/ca/1c724be89e603eb8b5587ea24c63a8c30094c8ff4d990780b5033ee15c40/django-5.1.10.tar.gz"
+    sha256 "73e5d191421d177803dbd5495d94bc7d06d156df9561f4eea9e11b4994c07137"
   end
 
   resource "django-allauth" do
@@ -256,8 +256,8 @@ class PaperlessNgx < Formula
   end
 
   resource "granian" do
-    url "https://files.pythonhosted.org/packages/82/0f/04aacf7ec30ba04018c7be761e5a6964d73cf82da5969b35e912e8e4e662/granian-2.3.1.tar.gz"
-    sha256 "5e9bddf3580e8ffccfaa97196672a6351630c959c37eb2498772504759a9f1ba"
+    url "https://files.pythonhosted.org/packages/9e/80/31faf7a08ddfc3b70af68202de66c6c3acf26cb8eeb0d821a04d21a80f16/granian-2.3.2.tar.gz"
+    sha256 "434bea33a3a4f63db1e65d63a64b80ab44dd09c85421c5555d4188c05c37794d"
   end
 
   resource "h11" do
@@ -346,8 +346,8 @@ class PaperlessNgx < Formula
   end
 
   resource "jsonschema" do
-    url "https://files.pythonhosted.org/packages/38/2e/03362ee4034a4c917f697890ccd4aec0800ccf9ded7f511971c75451deec/jsonschema-4.23.0.tar.gz"
-    sha256 "d71497fef26351a33265337fa77ffeb82423f3ea21283cd9467bb03999266bc4"
+    url "https://files.pythonhosted.org/packages/bf/d3/1cf5326b923a53515d8f3a2cd442e6d7e94fcc444716e879ea70a0ce3177/jsonschema-4.24.0.tar.gz"
+    sha256 "0b4e8069eb12aedfa881333004bccaec24ecef5a8a6a4b6df142b2cc9599d196"
   end
 
   resource "jsonschema-specifications" do
@@ -356,8 +356,8 @@ class PaperlessNgx < Formula
   end
 
   resource "kombu" do
-    url "https://files.pythonhosted.org/packages/60/0a/128b65651ed8120460fc5af754241ad595eac74993115ec0de4f2d7bc459/kombu-5.5.3.tar.gz"
-    sha256 "021a0e11fcfcd9b0260ef1fb64088c0e92beb976eb59c1dfca7ddd4ad4562ea2"
+    url "https://files.pythonhosted.org/packages/0f/d3/5ff936d8319ac86b9c409f1501b07c426e6ad41966fedace9ef1b966e23f/kombu-5.5.4.tar.gz"
+    sha256 "886600168275ebeada93b888e831352fe578168342f0d1d5833d88ba0d847363"
   end
 
   resource "langdetect" do
@@ -401,8 +401,8 @@ class PaperlessNgx < Formula
   end
 
   resource "ocrmypdf" do
-    url "https://files.pythonhosted.org/packages/cd/67/524ae8f93dd60f59b10798f09286efe6670d1b277d4add78a1916a94003e/ocrmypdf-16.10.1.tar.gz"
-    sha256 "9f32059fc97e25931aaa0a8a4027b8c9faca7d9e1183089f32e0cba5631449f1"
+    url "https://files.pythonhosted.org/packages/d5/b6/2e8d04b1e6b7e932beac5dfd61e3bf04166b3ca1202d58709fb18f7089b4/ocrmypdf-16.10.2.tar.gz"
+    sha256 "9b65730ba03c9dede6c6d8c61b6e99b93ea2d0192ed4482111174e151540f7fd"
   end
 
   resource "packaging" do
@@ -431,8 +431,8 @@ class PaperlessNgx < Formula
   end
 
   resource "pikepdf" do
-    url "https://files.pythonhosted.org/packages/9d/eb/4756ba366b5b243a1b5711e02993ea932d45d7e2d750bf01eb0029dc443e/pikepdf-9.7.0.tar.gz"
-    sha256 "ab54895a246768a2660cafe48052dbf5425c76f6f04e0f53b911df6cfd7e1c95"
+    url "https://files.pythonhosted.org/packages/da/90/7e7a5c21161391f136f80936c050723a7fef488637aca9444f528e36497e/pikepdf-9.8.1.tar.gz"
+    sha256 "3a40ac055f197f4ac74424f15cbd9f9f15cd8a9f60026be7d38e7b1443250121"
   end
 
   resource "pluggy" do
@@ -446,13 +446,18 @@ class PaperlessNgx < Formula
   end
 
   resource "prometheus-client" do
-    url "https://files.pythonhosted.org/packages/5b/5a/3fa1fa7e91a203759aaf316be394f70f2ef598d589b9785a8611b6094c00/prometheus_client-0.22.0.tar.gz"
-    sha256 "18da1d2241ac2d10c8d2110f13eedcd5c7c0c8af18c926e8731f04fc10cd575c"
+    url "https://files.pythonhosted.org/packages/5e/cf/40dde0a2be27cc1eb41e333d1a674a74ce8b8b0457269cc640fd42b07cf7/prometheus_client-0.22.1.tar.gz"
+    sha256 "190f1331e783cf21eb60bca559354e0a4d4378facecf78f5428c39b675d20d28"
   end
 
   resource "prompt-toolkit" do
     url "https://files.pythonhosted.org/packages/bb/6e/9d084c929dfe9e3bfe0c6a47e31f78a25c54627d64a66e884a8bf5474f1c/prompt_toolkit-3.0.51.tar.gz"
     sha256 "931a162e3b27fc90c86f1b48bb1fb2c528c2761475e57c9c06de13311c7b54ed"
+  end
+
+  resource "pycparser" do
+    url "https://files.pythonhosted.org/packages/1d/b2/31537cf4b1ca988837256c910a668b553fceb8f069bedc4b1c826024b52c/pycparser-2.22.tar.gz"
+    sha256 "491c8be9c040f5390f5bf44a5b07752bd07f56edf992381b05c701439eec10f6"
   end
 
   resource "pygments" do
@@ -601,8 +606,8 @@ class PaperlessNgx < Formula
   end
 
   resource "uritemplate" do
-    url "https://files.pythonhosted.org/packages/d2/5a/4742fdba39cd02a56226815abfa72fe0aa81c33bed16ed045647d6000eba/uritemplate-4.1.1.tar.gz"
-    sha256 "4346edfc5c3b79f694bccd6d6099a322bbeb628dbf2cd86eea55a456ce5124f0"
+    url "https://files.pythonhosted.org/packages/98/60/f174043244c5306c9988380d2cb10009f91563fc4b31293d27e17201af56/uritemplate-4.2.0.tar.gz"
+    sha256 "480c2ed180878955863323eea31b0ede668795de182617fef9c6ca09e6ec9d0e"
   end
 
   resource "urllib3" do
