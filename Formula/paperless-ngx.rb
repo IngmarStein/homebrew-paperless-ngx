@@ -3,8 +3,8 @@ class PaperlessNgx < Formula
 
   desc "Scan, index and archive all your physical documents"
   homepage "https://docs.paperless-ngx.com/"
-  url "https://github.com/paperless-ngx/paperless-ngx/archive/refs/tags/v2.18.3.tar.gz"
-  sha256 "4beac4dc9a95a3149bb501a8a0512638dcf9cb0f1f1fae85d32f70c18ece09e5"
+  url "https://github.com/paperless-ngx/paperless-ngx/archive/refs/tags/v2.18.4.tar.gz"
+  sha256 "112d31aea61682b7d461fb8020b7f13ae9507d32ede068a5a24aba69b32cf972"
   license "GPL-3.0-or-later"
 
   bottle do
@@ -363,8 +363,8 @@ class PaperlessNgx < Formula
   end
 
   resource "jsonschema-specifications" do
-    url "https://files.pythonhosted.org/packages/bf/ce/46fbd9c8119cfc3581ee5643ea49464d168028cfb5caff5fc0596d0cf914/jsonschema_specifications-2025.4.1.tar.gz"
-    sha256 "630159c9f4dbea161a6a2205c3011cc4f18ff381b189fff48bb39b9bf26ae608"
+    url "https://files.pythonhosted.org/packages/19/74/a633ee74eb36c44aa6d1095e7cc5569bebf04342ee146178e2d36600708b/jsonschema_specifications-2025.9.1.tar.gz"
+    sha256 "b540987f239e745613c7a9176f3edb72b832a4ac465cf02712288397832b5e8d"
   end
 
   resource "kombu" do
@@ -538,8 +538,8 @@ class PaperlessNgx < Formula
   end
 
   resource "rapidfuzz" do
-    url "https://files.pythonhosted.org/packages/ed/f6/6895abc3a3d056b9698da3199b04c0e56226d530ae44a470edabf8b664f0/rapidfuzz-3.13.0.tar.gz"
-    sha256 "d2eaf3839e52cbcc0accbe9817a67b4b0fcf70aaeb229cfddc1c28061f9ce5d8"
+    url "https://files.pythonhosted.org/packages/d4/11/0de727b336f28e25101d923c9feeeb64adcf231607fe7e1b083795fa149a/rapidfuzz-3.14.0.tar.gz"
+    sha256 "672b6ba06150e53d7baf4e3d5f12ffe8c213d5088239a15b5ae586ab245ac8b2"
   end
 
   resource "redis" do
