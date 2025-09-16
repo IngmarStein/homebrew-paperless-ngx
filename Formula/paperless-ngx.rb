@@ -6,6 +6,7 @@ class PaperlessNgx < Formula
   url "https://github.com/paperless-ngx/paperless-ngx/archive/refs/tags/v2.18.4.tar.gz"
   sha256 "112d31aea61682b7d461fb8020b7f13ae9507d32ede068a5a24aba69b32cf972"
   license "GPL-3.0-or-later"
+  revision 1
 
   bottle do
     root_url "https://ghcr.io/v2/ingmarstein/paperless-ngx"
@@ -162,8 +163,8 @@ class PaperlessNgx < Formula
   end
 
   resource "django" do
-    url "https://files.pythonhosted.org/packages/62/9b/779f853c3d2d58b9e08346061ff3e331cdec3fe3f53aae509e256412a593/django-5.2.5.tar.gz"
-    sha256 "0745b25681b129a77aae3d4f6549b62d3913d74407831abaa0d9021a03954bae"
+    url "https://files.pythonhosted.org/packages/4c/8c/2a21594337250a171d45dda926caa96309d5136becd1f48017247f9cdea0/django-5.2.6.tar.gz"
+    sha256 "da5e00372763193d73cecbf71084a3848458cecf4cee36b9a1e8d318d114a87b"
   end
 
   resource "django-allauth" do
@@ -253,8 +254,8 @@ class PaperlessNgx < Formula
   end
 
   resource "filelock" do
-    url "https://files.pythonhosted.org/packages/0a/10/c23352565a6544bdc5353e0b15fc1c563352101f30e24bf500207a54df9a/filelock-3.18.0.tar.gz"
-    sha256 "adbc88eabb99d2fec8c9c1b229b171f18afa655400173ddc653d5d01501fb9f2"
+    url "https://files.pythonhosted.org/packages/40/bb/0ab3e58d22305b6f5440629d20683af28959bf793d98d11950e305c1c326/filelock-3.19.1.tar.gz"
+    sha256 "66eda1888b0171c998b35be2bcc0f6d75c388a7ce20c3f3f37aa8e96c2dddf58"
   end
 
   resource "flower" do
@@ -263,13 +264,13 @@ class PaperlessNgx < Formula
   end
 
   resource "gotenberg-client" do
-    url "https://files.pythonhosted.org/packages/46/f4/aa1edff06d2da0bd41d05ee1d0f8459a580e8b9fa6658203cd2a37f85101/gotenberg_client-0.10.0.tar.gz"
-    sha256 "27da0ba29eb313d747b8940558d43588bfb816458829e4cb5e2697bfe645732d"
+    url "https://files.pythonhosted.org/packages/c4/e8/65928856a46023eda0af83d65987a99aa5190557f64c3c30478b91229070/gotenberg_client-0.11.0.tar.gz"
+    sha256 "44479d996fb4103fc324d84395cc4a762863a033833ac1fc63490e96109f50d7"
   end
 
   resource "granian" do
-    url "https://files.pythonhosted.org/packages/83/80/0ac55af595ba4cdaa85184799e9d7dd464e8099dcd28fc8cd42af09cdeb7/granian-2.5.2.tar.gz"
-    sha256 "fdaa832a99745f74ca303ee587ae9ad5e3f0ab4a6e5a5d509619faabc7e5b1f0"
+    url "https://files.pythonhosted.org/packages/ef/80/4ed5065cc6b5c60a76d1e1484f172d3c190b695b671677064019b1de1c27/granian-2.5.3.tar.gz"
+    sha256 "c9ff9994624e2e10d92dac0757da11cb205007dfdc5a6b422ca4bb100408c75a"
   end
 
   resource "h11" do
@@ -443,8 +444,8 @@ class PaperlessNgx < Formula
   end
 
   resource "pikepdf" do
-    url "https://files.pythonhosted.org/packages/34/a8/0a6c5a135b5e4c39ab42ad1e068335eb6e9ec08bd458f6c5299a915b8e1f/pikepdf-9.10.2.tar.gz"
-    sha256 "f62fc2183888f2ca1d271bf4faa440a2e2d0159221620a9c6a314f9c9a95680c"
+    url "https://files.pythonhosted.org/packages/f5/4c/62b37a3ee301c245be6ad269ca771c2c5298bf049366e1094cfdf80d850c/pikepdf-9.11.0.tar.gz"
+    sha256 "5ad6bffba08849c21eee273ba0b6fcd4b6a9cff81bcbca6988f87a765ba62163"
   end
 
   resource "pluggy" do
@@ -478,8 +479,8 @@ class PaperlessNgx < Formula
   end
 
   resource "pycparser" do
-    url "https://files.pythonhosted.org/packages/1d/b2/31537cf4b1ca988837256c910a668b553fceb8f069bedc4b1c826024b52c/pycparser-2.22.tar.gz"
-    sha256 "491c8be9c040f5390f5bf44a5b07752bd07f56edf992381b05c701439eec10f6"
+    url "https://files.pythonhosted.org/packages/fe/cf/d2d3b9f5699fb1e4615c8e32ff220203e43b248e1dfcc6736ad9057731ca/pycparser-2.23.tar.gz"
+    sha256 "78816d4f24add8f10a06d6f05b4d424ad9e96cfebf68a4ddc99c65c0720d00c2"
   end
 
   resource "pygments" do
@@ -538,8 +539,8 @@ class PaperlessNgx < Formula
   end
 
   resource "rapidfuzz" do
-    url "https://files.pythonhosted.org/packages/d4/11/0de727b336f28e25101d923c9feeeb64adcf231607fe7e1b083795fa149a/rapidfuzz-3.14.0.tar.gz"
-    sha256 "672b6ba06150e53d7baf4e3d5f12ffe8c213d5088239a15b5ae586ab245ac8b2"
+    url "https://files.pythonhosted.org/packages/ed/fc/a98b616db9a42dcdda7c78c76bdfdf6fe290ac4c5ffbb186f73ec981ad5b/rapidfuzz-3.14.1.tar.gz"
+    sha256 "b02850e7f7152bd1edff27e9d584505b84968cacedee7a734ec4050c655a803c"
   end
 
   resource "redis" do
@@ -578,13 +579,13 @@ class PaperlessNgx < Formula
   end
 
   resource "scikit-learn" do
-    url "https://files.pythonhosted.org/packages/41/84/5f4af978fff619706b8961accac84780a6d298d82a8873446f72edb4ead0/scikit_learn-1.7.1.tar.gz"
-    sha256 "24b3f1e976a4665aa74ee0fcaac2b8fccc6ae77c8e07ab25da3ba6d3292b9802"
+    url "https://files.pythonhosted.org/packages/98/c2/a7855e41c9d285dfe86dc50b250978105dce513d6e459ea66a6aeb0e1e0c/scikit_learn-1.7.2.tar.gz"
+    sha256 "20e9e49ecd130598f1ca38a1d85090e1a600147b9c02fa6f15d69cb53d968fda"
   end
 
   resource "setproctitle" do
-    url "https://files.pythonhosted.org/packages/9e/af/56efe21c53ac81ac87e000b15e60b3d8104224b4313b6eacac3597bd183d/setproctitle-1.3.6.tar.gz"
-    sha256 "c9f32b96c700bb384f33f7cf07954bb609d35dd82752cef57fb2ee0968409169"
+    url "https://files.pythonhosted.org/packages/8d/48/49393a96a2eef1ab418b17475fb92b8fcfad83d099e678751b05472e69de/setproctitle-1.3.7.tar.gz"
+    sha256 "bc2bc917691c1537d5b9bca1468437176809c7e11e5694ca79a9ca12345dcb9e"
   end
 
   resource "sniffio" do
@@ -668,8 +669,8 @@ class PaperlessNgx < Formula
   end
 
   resource "whitenoise" do
-    url "https://files.pythonhosted.org/packages/b9/cf/c15c2f21aee6b22a9f6fc9be3f7e477e2442ec22848273db7f4eb73d6162/whitenoise-6.9.0.tar.gz"
-    sha256 "8c4a7c9d384694990c26f3047e118c691557481d624f069b7f7752a2f735d609"
+    url "https://files.pythonhosted.org/packages/27/9a/4f4b84ff1f3a5c3cbc8070b6ecbbab6cd121c385244c9d24d80bb284190f/whitenoise-6.10.0.tar.gz"
+    sha256 "7b7e53de65d749cb1ce4a7100e751d9742e323b52746f9f93944c0d348ea2d02"
   end
 
   resource "whoosh-reloaded" do
@@ -683,8 +684,8 @@ class PaperlessNgx < Formula
   end
 
   resource "zstandard" do
-    url "https://files.pythonhosted.org/packages/09/1b/c20b2ef1d987627765dcd5bf1dadb8ef6564f00a87972635099bb76b7a05/zstandard-0.24.0.tar.gz"
-    sha256 "fe3198b81c00032326342d973e526803f183f97aa9e9a98e3f897ebafe21178f"
+    url "https://files.pythonhosted.org/packages/fd/aa/3e0508d5a5dd96529cdc5a97011299056e14c6505b678fd58938792794b1/zstandard-0.25.0.tar.gz"
+    sha256 "7713e1179d162cf5c7906da876ec2ccb9c3a9dcbdffef0cc7f70c3667a205f0b"
   end
 
   resource "zxing-cpp" do
