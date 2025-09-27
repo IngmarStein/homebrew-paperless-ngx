@@ -6,7 +6,7 @@ class PaperlessNgx < Formula
   url "https://github.com/paperless-ngx/paperless-ngx/archive/refs/tags/v2.18.4.tar.gz"
   sha256 "112d31aea61682b7d461fb8020b7f13ae9507d32ede068a5a24aba69b32cf972"
   license "GPL-3.0-or-later"
-  revision 4
+  revision 5
 
   bottle do
     root_url "https://ghcr.io/v2/ingmarstein/paperless-ngx"
@@ -280,6 +280,12 @@ class PaperlessNgx < Formula
   resource "granian" do
     url "https://files.pythonhosted.org/packages/78/9b/6ac903de211e5874824e7349387c9e0467459dc1ad0cd960cb4196f38ae6/granian-2.5.4.tar.gz"
     sha256 "85989a08052f1bbb174fd73759e1ae505e50b4c0690af366ca6ba844203dd463"
+  end
+
+  # needed for gevent
+  resource "greenlet" do
+    url "https://files.pythonhosted.org/packages/03/b8/704d753a5a45507a7aab61f18db9509302ed3d0a27ac7e0359ec2905b1a6/greenlet-3.2.4.tar.gz"
+    sha256 "0dca0d95ff849f9a364385f36ab49f50065d76964944638be9691e1832e9f86d"
   end
 
   resource "h11" do
