@@ -262,16 +262,6 @@ class PaperlessNgx < Formula
     sha256 "5ab717b979530770c16afb48b50d2a98d23c3e9fe39851dcf6bc4d01845a02a0"
   end
 
-  # needed for celery --pool gevent
-  # prevents a crash on macOS:
-  #   *** multi-threaded process forked ***
-  #   crashed on child side of fork pre-exec
-  # See https://bugs.python.org/issue37677
-  resource "gevent" do
-    url "https://files.pythonhosted.org/packages/9e/48/b3ef2673ffb940f980966694e40d6d32560f3ffa284ecaeb5ea3a90a6d3f/gevent-25.9.1.tar.gz"
-    sha256 "adf9cd552de44a4e6754c51ff2e78d9193b7fa6eab123db9578a210e657235dd"
-  end
-
   resource "gotenberg-client" do
     url "https://files.pythonhosted.org/packages/c4/e8/65928856a46023eda0af83d65987a99aa5190557f64c3c30478b91229070/gotenberg_client-0.11.0.tar.gz"
     sha256 "44479d996fb4103fc324d84395cc4a762863a033833ac1fc63490e96109f50d7"
@@ -280,12 +270,6 @@ class PaperlessNgx < Formula
   resource "granian" do
     url "https://files.pythonhosted.org/packages/78/9b/6ac903de211e5874824e7349387c9e0467459dc1ad0cd960cb4196f38ae6/granian-2.5.4.tar.gz"
     sha256 "85989a08052f1bbb174fd73759e1ae505e50b4c0690af366ca6ba844203dd463"
-  end
-
-  # needed for gevent
-  resource "greenlet" do
-    url "https://files.pythonhosted.org/packages/03/b8/704d753a5a45507a7aab61f18db9509302ed3d0a27ac7e0359ec2905b1a6/greenlet-3.2.4.tar.gz"
-    sha256 "0dca0d95ff849f9a364385f36ab49f50065d76964944638be9691e1832e9f86d"
   end
 
   resource "h11" do
@@ -823,6 +807,12 @@ class PaperlessNgx < Formula
     (consumer_dir/"run").chmod 0755
 
     # paperless-worker service
+    # use `--pool threads` to prevent a crash on macOS:
+    #   *** multi-threaded process forked ***
+    #   crashed on child side of fork pre-exec
+    # See also:
+    #  - https://bugs.python.org/issue37677
+    #  - https://github.com/celery/celery/pull/9810
     worker_dir = s6_services_dir/"paperless-worker"
     worker_dir.mkpath
     (worker_dir/"run").write <<~EOS
@@ -837,7 +827,7 @@ class PaperlessNgx < Formula
         --app paperless \\
         worker \\
         --loglevel INFO \\
-        --pool gevent \\
+        --pool threads \\
         --without-mingle \\
         --without-gossip
     EOS
