@@ -6,7 +6,7 @@ class PaperlessNgx < Formula
   url "https://github.com/paperless-ngx/paperless-ngx/archive/refs/tags/v2.18.4.tar.gz"
   sha256 "112d31aea61682b7d461fb8020b7f13ae9507d32ede068a5a24aba69b32cf972"
   license "GPL-3.0-or-later"
-  revision 6
+  revision 7
 
   bottle do
     root_url "https://ghcr.io/v2/ingmarstein/paperless-ngx"
@@ -702,18 +702,11 @@ class PaperlessNgx < Formula
     end
 
     # build backend
-    venv = virtualenv_install_with_resources without: ["httpx-oauth", "zxing-cpp"]
+    venv = virtualenv_install_with_resources without: ["zxing-cpp"]
     python_executable = venv.root/"bin/python"
     manage_py_script = venv.site_packages/"manage.py"
     celery_executable = venv.root/"bin/celery"
     granian_executable = venv.root/"bin/granian"
-    # https://github.com/frankie567/hatch-regex-commit/issues/4
-    resource("httpx-oauth").stage do
-      inreplace "pyproject.toml",
-                /requires\s*=\s*\[\s*"hatchling",\s*"hatch-regex-commit"\s*\]/,
-                'requires = ["hatchling"]'
-      venv.pip_install Pathname.pwd
-    end
     # set MACOSX_DEPLOYMENT_TARGET only for zxing-cpp to avoid
     # `invalid deployment target` error
     ENV["MACOSX_DEPLOYMENT_TARGET"] = MacOS.version if OS.mac?
