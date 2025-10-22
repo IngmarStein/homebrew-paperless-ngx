@@ -9,8 +9,8 @@ class PaperlessNgx < Formula
 
   bottle do
     root_url "https://ghcr.io/v2/ingmarstein/paperless-ngx"
-    sha256 arm64_tahoe:  "4a6cf4519f02e7eabece3c72bf1454eef8a70aefcd5532df09918a58d878f868"
-    sha256 x86_64_linux: "0e7ecf05ed4443d7b87f9d1490e1ed4a220a597fbe431655ce1671dd66d83ff6"
+    sha256 arm64_tahoe:  "cc21ef011909c1062437b41342ea90e95c5453d369073fa294360d8d70d889ee"
+    sha256 x86_64_linux: "4cc38e6554a9e443211777e56e93c6d6787698580f8aa1c6ce539ce94ebed058"
   end
 
   depends_on "angular-cli" => :build
