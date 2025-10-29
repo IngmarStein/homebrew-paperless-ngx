@@ -6,11 +6,12 @@ class PaperlessNgx < Formula
   url "https://github.com/paperless-ngx/paperless-ngx/archive/refs/tags/v2.19.3.tar.gz"
   sha256 "bbc8636838a7c7c4ee244c0330dca6d79ebf84c5395411446a22c4e63eababa4"
   license "GPL-3.0-or-later"
+  revision 1
 
   bottle do
     root_url "https://ghcr.io/v2/ingmarstein/paperless-ngx"
-    sha256 arm64_tahoe:  "cb01df2f0bb8b43892a43759d338e328c4e192e38741adde9230d2ff96b0c216"
-    sha256 x86_64_linux: "d6411f3192cff86f91905d3276c2d0a25308b843bc42b1e88f73932878809909"
+    sha256 arm64_tahoe:  "746e315b351c204f36d9383a13c2d5f9dee48e1637337810eae1f4409d697d3c"
+    sha256 x86_64_linux: "64df6c633dc1f8283f8740e3a2399f47499a120bebae9ec4ff8ae80a5c17cf97"
   end
 
   depends_on "angular-cli" => :build
@@ -44,7 +45,7 @@ class PaperlessNgx < Formula
   depends_on "pillow"
   depends_on "poppler"
   depends_on "pycparser"
-  depends_on "python@3.13"
+  depends_on "python@3.14"
   depends_on "qpdf"
   depends_on "s6"
   depends_on "scipy"
@@ -53,6 +54,11 @@ class PaperlessNgx < Formula
   uses_from_macos "libxml2"
   uses_from_macos "libxslt"
   uses_from_macos "zlib"
+
+  # fido2: breaking change in fido2-2.0.0, so pinned to 1.2.0
+  # psycopg-c: breaks `brew update-python-resources` (which can't find pg_config), hence a manual addition below
+  pypi_packages exclude_packages: ["certifi", "cffi", "cryptography", "pillow", "scipy", "numpy", "pycparser"],
+                extra_packages:   ["granian[uvloop]", "fido2==1.2.0", "psycopg-pool"]
 
   resource "amqp" do
     url "https://files.pythonhosted.org/packages/79/fc/ec94a357dfc6683d8c86f8b4cfa5416a4c36b28052ec8260c77aca96a443/amqp-5.3.1.tar.gz"
@@ -150,8 +156,8 @@ class PaperlessNgx < Formula
   end
 
   resource "deprecated" do
-    url "https://files.pythonhosted.org/packages/66/9c/2665cc17662aacbd948ecc5d685afad60b60b80bcf4a93dd706197d11a4f/deprecated-1.3.0-py2.py3-none-any.whl"
-    sha256 "0efaf13de8bd3f3f86d88f6e1001d3982dae6e64b85302b60230de4d047387bd"
+    url "https://files.pythonhosted.org/packages/49/85/12f0a49a7c4ffb70572b6c2ef13c90c88fd190debda93b23f026b25f9634/deprecated-1.3.1.tar.gz"
+    sha256 "b1b50e0ff0c1fddaa5708a2c6b0a6588bb09b892825ab2b214ac9ea9d92a5223"
   end
 
   resource "deprecation" do
@@ -235,8 +241,8 @@ class PaperlessNgx < Formula
   end
 
   resource "drf-spectacular" do
-    url "https://files.pythonhosted.org/packages/da/b9/741056455aed00fa51a1df41fad5ad27c8e0d433b6bf490d4e60e2808bc6/drf_spectacular-0.28.0.tar.gz"
-    sha256 "2c778a47a40ab2f5078a7c42e82baba07397bb35b074ae4680721b2805943061"
+    url "https://files.pythonhosted.org/packages/5e/0e/a4f50d83e76cbe797eda88fc0083c8ca970cfa362b5586359ef06ec6f70a/drf_spectacular-0.29.0.tar.gz"
+    sha256 "0a069339ea390ce7f14a75e8b5af4a0860a46e833fd4af027411a3e94fc1a0cc"
   end
 
   resource "drf-spectacular-sidecar" do
@@ -249,7 +255,6 @@ class PaperlessNgx < Formula
     sha256 "4a3d2737c1cbfafa690e30236b169112e5b23cfe3d288f3992b0651a1b828c4d"
   end
 
-  # Breaking change in v2.0
   resource "fido2" do
     url "https://files.pythonhosted.org/packages/eb/cc/4529123364d41f342145f2fd775307eaed817cd22810895dea10e15a4d06/fido2-1.2.0.tar.gz"
     sha256 "e39f95920122d64283fda5e5581d95a206e704fa42846bfa4662f86aa0d3333b"
@@ -471,18 +476,13 @@ class PaperlessNgx < Formula
   end
 
   resource "psycopg-c" do
-    url "https://files.pythonhosted.org/packages/4a/64/68900809282759f5c573f17873c65287348cd2a8c8dff3e81377b7b6829e/psycopg_c-3.2.11.tar.gz"
-    sha256 "b3104bcbd62e34cfc736bbdaa4cdcb7e9bfc9a4c0a1f0992cac0f68ea941a450"
+    url "https://files.pythonhosted.org/packages/68/27/33699874745d7bb195e78fd0a97349908b64d3ec5fea7b8e5e52f56df04c/psycopg_c-3.2.12.tar.gz"
+    sha256 "1c80042067d5df90d184c6fbd58661350b3620f99d87a01c882953c4d5dfa52b"
   end
 
   resource "psycopg-pool" do
-    url "https://files.pythonhosted.org/packages/cf/13/1e7850bb2c69a63267c3dbf37387d3f71a00fd0e2fa55c5db14d64ba1af4/psycopg_pool-3.2.6.tar.gz"
-    sha256 "0f92a7817719517212fbfe2fd58b8c35c1850cdd2a80d36b581ba2085d9148e5"
-  end
-
-  resource "pycparser" do
-    url "https://files.pythonhosted.org/packages/fe/cf/d2d3b9f5699fb1e4615c8e32ff220203e43b248e1dfcc6736ad9057731ca/pycparser-2.23.tar.gz"
-    sha256 "78816d4f24add8f10a06d6f05b4d424ad9e96cfebf68a4ddc99c65c0720d00c2"
+    url "https://files.pythonhosted.org/packages/9d/8f/3ec52b17087c2ed5fa32b64fd4814dde964c9aa4bd49d0d30fc24725ca6d/psycopg_pool-3.2.7.tar.gz"
+    sha256 "a77d531bfca238e49e5fb5832d65b98e69f2c62bfda3d2d4d833696bdc9ca54b"
   end
 
   resource "pygments" do
@@ -541,8 +541,8 @@ class PaperlessNgx < Formula
   end
 
   resource "rapidfuzz" do
-    url "https://files.pythonhosted.org/packages/ed/fc/a98b616db9a42dcdda7c78c76bdfdf6fe290ac4c5ffbb186f73ec981ad5b/rapidfuzz-3.14.1.tar.gz"
-    sha256 "b02850e7f7152bd1edff27e9d584505b84968cacedee7a734ec4050c655a803c"
+    url "https://files.pythonhosted.org/packages/d3/28/9d808fe62375b9aab5ba92fa9b29371297b067c2790b2d7cda648b1e2f8d/rapidfuzz-3.14.3.tar.gz"
+    sha256 "2491937177868bc4b1e469087601d53f925e8d270ccc21e07404b4b5814b7b5f"
   end
 
   resource "redis" do
