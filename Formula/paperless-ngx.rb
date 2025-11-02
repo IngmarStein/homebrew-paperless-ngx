@@ -6,7 +6,7 @@ class PaperlessNgx < Formula
   url "https://github.com/paperless-ngx/paperless-ngx/archive/refs/tags/v2.19.3.tar.gz"
   sha256 "bbc8636838a7c7c4ee244c0330dca6d79ebf84c5395411446a22c4e63eababa4"
   license "GPL-3.0-or-later"
-  revision 1
+  revision 2
 
   bottle do
     root_url "https://ghcr.io/v2/ingmarstein/paperless-ngx"
@@ -57,7 +57,7 @@ class PaperlessNgx < Formula
 
   # fido2: breaking change in fido2-2.0.0, so pinned to 1.2.0
   # psycopg-c: breaks `brew update-python-resources` (which can't find pg_config), hence a manual addition below
-  pypi_packages exclude_packages: ["certifi", "cffi", "cryptography", "pillow", "scipy", "numpy", "pycparser"],
+  pypi_packages exclude_packages: %w[certifi cffi cryptography pillow scipy numpy pycparser],
                 extra_packages:   ["granian[uvloop]", "fido2==1.2.0", "psycopg-pool"]
 
   resource "amqp" do
