@@ -3,8 +3,8 @@ class PaperlessNgx < Formula
 
   desc "Scan, index and archive all your physical documents"
   homepage "https://docs.paperless-ngx.com/"
-  url "https://github.com/paperless-ngx/paperless-ngx/archive/refs/tags/v2.19.4.tar.gz"
-  sha256 "6a344162756c4b49304f051720de7b7bed0dfff66fdde3081be8b2e6da437c42"
+  url "https://github.com/paperless-ngx/paperless-ngx/archive/refs/tags/v2.19.5.tar.gz"
+  sha256 "48f3f41483f958af9ca911b926ba7e91519ca939f8f2b6e3423e4c8ed565a444"
   license "GPL-3.0-or-later"
 
   bottle do
@@ -95,8 +95,8 @@ class PaperlessNgx < Formula
   end
 
   resource "brotli" do
-    url "https://files.pythonhosted.org/packages/2f/c2/f9e977608bdf958650638c3f1e28f85a1b075f075ebbe77db8555463787b/Brotli-1.1.0.tar.gz"
-    sha256 "81de08ac11bcb85841e440c13611c00b67d3bf82698314928d0b676362546724"
+    url "https://files.pythonhosted.org/packages/f7/16/c92ca344d646e71a43b8bb353f0a6490d7f6e06210f8554c8f874e454285/brotli-1.2.0.tar.gz"
+    sha256 "e310f77e41941c13340a95976fe66a8a95b01e783d430eeaf7a2f87e0a57dd0a"
   end
 
   resource "cached-property" do
@@ -165,8 +165,8 @@ class PaperlessNgx < Formula
   end
 
   resource "django" do
-    url "https://files.pythonhosted.org/packages/b1/96/bd84e2bb997994de8bcda47ae4560991084e86536541d7214393880f01a8/django-5.2.7.tar.gz"
-    sha256 "e0f6f12e2551b1716a95a63a1366ca91bbcd7be059862c1b18f989b1da356cdd"
+    url "https://files.pythonhosted.org/packages/05/a2/933dbbb3dd9990494960f6e64aca2af4c0745b63b7113f59a822df92329e/django-5.2.8.tar.gz"
+    sha256 "23254866a5bb9a2cfa6004e8b809ec6246eba4b58a7589bc2772f1bcc8456c7f"
   end
 
   resource "django-allauth" do
@@ -275,8 +275,8 @@ class PaperlessNgx < Formula
   end
 
   resource "granian" do
-    url "https://files.pythonhosted.org/packages/21/86/46a636beb83e7f6d2572e00fee3f3f206b16929d688440e2582d47f9377d/granian-2.5.6.tar.gz"
-    sha256 "173960cbb53dfabebced4f3e8de93b66f59294611df69cc986e26d581527efe4"
+    url "https://files.pythonhosted.org/packages/db/b1/100c5add0409559ddbbecca5835c17217b7a2e026eff999bfa359a630686/granian-2.5.7.tar.gz"
+    sha256 "4702a7bcc736454803426bd2c4e7a374739ae1e4b11d27bcdc49b691d316fa0c"
   end
 
   resource "h11" do
@@ -335,8 +335,8 @@ class PaperlessNgx < Formula
   end
 
   resource "img2pdf" do
-    url "https://files.pythonhosted.org/packages/82/c3/023387e00682dc1b46bd719ec19c4c9206dc8eb182dfd02bc62c5b9320a2/img2pdf-0.6.1.tar.gz"
-    sha256 "306e279eb832bc159d7d6294b697a9fbd11b4be1f799b14b3b2174fb506af289"
+    url "https://files.pythonhosted.org/packages/8e/97/ca44c467131b93fda82d2a2f21b738c8bcf63b5259e3b8250e928b8dd52a/img2pdf-0.6.3.tar.gz"
+    sha256 "219518020f5bd242bdc46493941ea3f756f664c2e86f2454721e74353f58cd95"
   end
 
   resource "inflection" do
