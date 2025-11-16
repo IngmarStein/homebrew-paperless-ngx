@@ -3,8 +3,8 @@ class PaperlessNgx < Formula
 
   desc "Scan, index and archive all your physical documents"
   homepage "https://docs.paperless-ngx.com/"
-  url "https://github.com/paperless-ngx/paperless-ngx/archive/refs/tags/v2.19.5.tar.gz"
-  sha256 "48f3f41483f958af9ca911b926ba7e91519ca939f8f2b6e3423e4c8ed565a444"
+  url "https://github.com/paperless-ngx/paperless-ngx/archive/refs/tags/v2.19.6.tar.gz"
+  sha256 "e6d2f41b934be500128934fa712fa31e0f108e4c166d0c3435aadb7342b09306"
   license "GPL-3.0-or-later"
 
   bottle do
@@ -125,8 +125,8 @@ class PaperlessNgx < Formula
   end
 
   resource "click" do
-    url "https://files.pythonhosted.org/packages/46/61/de6cd827efad202d7057d93e0fed9294b96952e188f7384832791c7b2254/click-8.3.0.tar.gz"
-    sha256 "e7b8232224eba16f4ebe410c25ced9f7875cb5f3263ffc93cc3e8da705e229c4"
+    url "https://files.pythonhosted.org/packages/3d/fa/656b739db8587d7b5dfa22e22ed02566950fbfbcdc20311993483657a5c0/click-8.3.1.tar.gz"
+    sha256 "12ff4785d337a1bb490bb7e9c2b1ee5da3112e94a8622f26a6c77f5d2fc6842a"
   end
 
   resource "click-didyoumean" do
@@ -440,8 +440,8 @@ class PaperlessNgx < Formula
   end
 
   resource "pdfminer-six" do
-    url "https://files.pythonhosted.org/packages/78/46/5223d613ac4963e1f7c07b2660fe0e9e770102ec6bda8c038400113fb215/pdfminer_six-20250506.tar.gz"
-    sha256 "b03cc8df09cf3c7aba8246deae52e0bca7ebb112a38895b5e1d4f5dd2b8ca2e7"
+    url "https://files.pythonhosted.org/packages/1d/50/5315f381a25dc80a8d2ea7c62d9a28c0137f10ccc263623a0db8b49fcced/pdfminer_six-20251107.tar.gz"
+    sha256 "5fb0c553799c591777f22c0c72b77fc2522d7d10c70654e25f4c5f1fd996e008"
   end
 
   resource "pi-heif" do
@@ -450,8 +450,8 @@ class PaperlessNgx < Formula
   end
 
   resource "pikepdf" do
-    url "https://files.pythonhosted.org/packages/d3/1c/c8c8c53d5f2b1e3e9c9a12ff3442aafd5b368ffb167b03c8328da608d72e/pikepdf-10.0.0.tar.gz"
-    sha256 "f1396843aae147328bf221b778725636a1cf33080a46a583b1d18fbb0ca2bcd3"
+    url "https://files.pythonhosted.org/packages/f7/79/9a63d5ccac66ace679cf93c84894db15074fe849d41cd39232cb09ec8819/pikepdf-10.0.2.tar.gz"
+    sha256 "7c85a2526253e35575edb2e28cdc740d004be4b7c5fda954f0e721ee1c423a52"
   end
 
   resource "pluggy" do
@@ -685,8 +685,8 @@ class PaperlessNgx < Formula
   end
 
   resource "wrapt" do
-    url "https://files.pythonhosted.org/packages/49/19/5e5bcd855d808892fe02d49219f97a50f64cd6d8313d75df3494ee97b1a3/wrapt-2.0.0.tar.gz"
-    sha256 "35a542cc7a962331d0279735c30995b024e852cf40481e384fd63caaa391cbb9"
+    url "https://files.pythonhosted.org/packages/49/2a/6de8a50cb435b7f42c46126cf1a54b2aab81784e74c8595c8e025e8f36d3/wrapt-2.0.1.tar.gz"
+    sha256 "9c9c635e78497cacb81e84f8b11b23e0aacac7a136e73b8e5b2109a1d9fc468f"
   end
 
   resource "zstandard" do
