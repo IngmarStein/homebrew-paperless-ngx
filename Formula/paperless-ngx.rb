@@ -3,8 +3,8 @@ class PaperlessNgx < Formula
 
   desc "Scan, index and archive all your physical documents"
   homepage "https://docs.paperless-ngx.com/"
-  url "https://github.com/paperless-ngx/paperless-ngx/archive/refs/tags/v2.20.0.tar.gz"
-  sha256 "f4e7106f951f372c3fcbdf548e0a02f8365f6073dfd292b69dcb25b64005a782"
+  url "https://github.com/paperless-ngx/paperless-ngx/archive/refs/tags/v2.20.1.tar.gz"
+  sha256 "84744edcdeae60c6e2d3fbe01ad3888247baf326189ba01511d531272bd74d32"
   license "GPL-3.0-or-later"
 
   bottle do
@@ -65,8 +65,8 @@ class PaperlessNgx < Formula
   end
 
   resource "anyio" do
-    url "https://files.pythonhosted.org/packages/c6/78/7d432127c41b50bccba979505f272c16cbcadcc33645d5fa3a738110ae75/anyio-4.11.0.tar.gz"
-    sha256 "82a8d0b81e318cc5ce71a5f1f8b5c4e63619620b63141ef8c995fa0db95a57c4"
+    url "https://files.pythonhosted.org/packages/16/ce/8a777047513153587e5434fd752e89334ac33e379aa3497db860eeb60377/anyio-4.12.0.tar.gz"
+    sha256 "73c693b567b0c55130c104d0b43a9baf3aa6a31fc6110116509f27bf75e21ec0"
   end
 
   resource "asgiref" do
@@ -85,8 +85,8 @@ class PaperlessNgx < Formula
   end
 
   resource "billiard" do
-    url "https://files.pythonhosted.org/packages/6a/50/cc2b8b6e6433918a6b9a3566483b743dcd229da1e974be9b5f259db3aad7/billiard-4.2.3.tar.gz"
-    sha256 "96486f0885afc38219d02d5f0ccd5bec8226a414b834ab244008cbb0025b8dcb"
+    url "https://files.pythonhosted.org/packages/58/23/b12ac0bcdfb7360d664f40a00b1bda139cbbbced012c34e375506dbd0143/billiard-4.2.4.tar.gz"
+    sha256 "55f542c371209e03cd5862299b74e52e4fbcba8250ba611ad94276b369b6a85f"
   end
 
   resource "bleach" do
@@ -225,8 +225,8 @@ class PaperlessNgx < Formula
   end
 
   resource "django-treenode" do
-    url "https://files.pythonhosted.org/packages/75/f3/274b84607fd64c0844e98659985f964190a46c2460f2523a446c4a946216/django_treenode-0.23.2.tar.gz"
-    sha256 "3c5a6ff5e0c83e34da88749f602b3013dd1ab0527f51952c616e3c21bf265d52"
+    url "https://files.pythonhosted.org/packages/25/58/86edbbd1075bb8bc0962c6feb13bc06822405a10fea8352ad73ab2babdd9/django_treenode-0.23.3.tar.gz"
+    sha256 "714c825d5b925a3d2848d0709f29973941ea41a606b8e2b64cbec46010a8cce3"
   end
 
   resource "djangorestframework" do
@@ -480,8 +480,8 @@ class PaperlessNgx < Formula
   end
 
   resource "psycopg-pool" do
-    url "https://files.pythonhosted.org/packages/b7/20/10064379ed363b7a2a6da3aca986a668c792a8145d7344854ab14c7d7292/psycopg_pool-3.2.8.tar.gz"
-    sha256 "854e17c2a637c3b9f8d8b24faad57d4cf850baf3fc03ca56ef7e5b4998e391b9"
+    url "https://files.pythonhosted.org/packages/56/9a/9470d013d0d50af0da9c4251614aeb3c1823635cab3edc211e3839db0bcf/psycopg_pool-3.3.0.tar.gz"
+    sha256 "fa115eb2860bd88fce1717d75611f41490dec6135efb619611142b24da3f6db5"
   end
 
   resource "pygments" do
@@ -570,8 +570,8 @@ class PaperlessNgx < Formula
   end
 
   resource "rpds-py" do
-    url "https://files.pythonhosted.org/packages/98/33/23b3b3419b6a3e0f559c7c0d2ca8fc1b9448382b25245033788785921332/rpds_py-0.29.0.tar.gz"
-    sha256 "fe55fe686908f50154d1dc599232016e50c243b438c3b7432f24e2895b0e5359"
+    url "https://files.pythonhosted.org/packages/20/af/3f2f423103f1113b36230496629986e0ef7e199d2aa8392452b484b38ced/rpds_py-0.30.0.tar.gz"
+    sha256 "dd8ff7cf90014af0c0f787eea34794ebf6415242ee1d6fa91eaba725cc441e84"
   end
 
   resource "scikit-learn" do
@@ -589,14 +589,9 @@ class PaperlessNgx < Formula
     sha256 "ff70335d468e7eb6ec65b95b99d3a2836546063f63acc5171de367e834932a81"
   end
 
-  resource "sniffio" do
-    url "https://files.pythonhosted.org/packages/a2/87/a6771e1546d97e7e041b6ae58d80074f81b7d5121207425c964ddf5cfdbd/sniffio-1.3.1.tar.gz"
-    sha256 "f4324edc670a0f49750a81b895f35c3adb843cca46f0530f79fc1babb23789dc"
-  end
-
   resource "sqlparse" do
-    url "https://files.pythonhosted.org/packages/e5/40/edede8dd6977b0d3da179a342c198ed100dd2aba4be081861ee5911e4da4/sqlparse-0.5.3.tar.gz"
-    sha256 "09f67787f56a0b16ecdbde1bfc7f5d9c3371ca683cfeaa8e6ff60b4807ec9272"
+    url "https://files.pythonhosted.org/packages/18/67/701f86b28d63b2086de47c942eccf8ca2208b3be69715a1119a4e384415a/sqlparse-0.5.4.tar.gz"
+    sha256 "4396a7d3cf1cd679c1be976cf3dc6e0a51d0111e87787e7a8d780e7d5a998f9e"
   end
 
   resource "threadpoolctl" do
