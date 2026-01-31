@@ -3,8 +3,8 @@ class PaperlessNgx < Formula
 
   desc "Scan, index and archive all your physical documents"
   homepage "https://docs.paperless-ngx.com/"
-  url "https://github.com/paperless-ngx/paperless-ngx/archive/refs/tags/v2.20.5.tar.gz"
-  sha256 "34c3de3a59d885b81ca5a001ae71f84b82987cd1cca0324354a3130e38d6f82e"
+  url "https://github.com/paperless-ngx/paperless-ngx/archive/refs/tags/v2.20.6.tar.gz"
+  sha256 "14ba1c2541d40ee98898f57000a76b4ae5ebfee17bc39973422f6741851e82a8"
   license "GPL-3.0-or-later"
 
   bottle do
@@ -330,8 +330,8 @@ class PaperlessNgx < Formula
   end
 
   resource "imap-tools" do
-    url "https://files.pythonhosted.org/packages/b0/76/2d74bf4702d7d9fb2dd056e058929961a05389be47b990f3275e8596012e/imap_tools-1.11.0.tar.gz"
-    sha256 "77b055d301f24e668ff54ad50cc32a36d1579c6aa9b26e5fb6501fb622feb6ea"
+    url "https://files.pythonhosted.org/packages/9a/eb/de91770dc8f34691c33355f7b6277500db32f68ce039c08e2a40ad5a0536/imap_tools-1.11.1.tar.gz"
+    sha256 "e3aa02ff3415a2b50a47707eacbf7386bb79aabc34e370c6bb95f9ad20504389"
   end
 
   resource "img2pdf" do
@@ -425,8 +425,8 @@ class PaperlessNgx < Formula
   end
 
   resource "packaging" do
-    url "https://files.pythonhosted.org/packages/a1/d4/1fc4078c65507b51b96ca8f8c3ba19e6a61c8253c72794544580a7b6c24d/packaging-25.0.tar.gz"
-    sha256 "d443872c98d677bf60f6a1f2f8c1cb748e8fe762d2bf9d3148b5599295b0fc4f"
+    url "https://files.pythonhosted.org/packages/65/ee/299d360cdc32edc7d2cf530f3accf79c4fca01e96ffc950d8a52213bd8e4/packaging-26.0.tar.gz"
+    sha256 "00243ae351a257117b6a241061796684b084ed1c516a08c48a3f7e147a9d80b4"
   end
 
   resource "pathvalidate" do
@@ -445,13 +445,13 @@ class PaperlessNgx < Formula
   end
 
   resource "pi-heif" do
-    url "https://files.pythonhosted.org/packages/bf/7b/7c7b2aeb4995906725f13b885884d5b22e4f2d55028e8941555d2789e5e7/pi_heif-1.1.1.tar.gz"
-    sha256 "42ece7c3b40569f295fd4d2b10f38d1cd5012ca548446a2ca33895f0d6900c4f"
+    url "https://files.pythonhosted.org/packages/c5/0b/0c97767b8171c7f9f0584c0a70e7b86655a1898c2f5b8ae04a69f4e481a1/pi_heif-1.2.0.tar.gz"
+    sha256 "52bbbc8c30b803288a9f1bb02e4575797940fdc1f5091fce743c699e812418cc"
   end
 
   resource "pikepdf" do
-    url "https://files.pythonhosted.org/packages/6e/e9/a1462d6160805ca80c8f4aafc941aaf410a92d0fcc683706e94f499c2fac/pikepdf-10.2.0.tar.gz"
-    sha256 "0f398b0daeb2ffd2358f75c06f1dd47b9ba76f1a77dfe938cccf7080c58227d7"
+    url "https://files.pythonhosted.org/packages/b6/ba/7635a5f4259a2a91ed4f094e358dec3068ecedc891d70b8e76a02904ca0c/pikepdf-10.3.0.tar.gz"
+    sha256 "e2a64a5f1ebf8c411193126b9eeff7faf5739a40bce7441e579531422469fbb1"
   end
 
   resource "pluggy" do
@@ -490,8 +490,8 @@ class PaperlessNgx < Formula
   end
 
   resource "pyjwt" do
-    url "https://files.pythonhosted.org/packages/e7/46/bd74733ff231675599650d3e47f361794b22ef3e3770998dda30d3b63726/pyjwt-2.10.1.tar.gz"
-    sha256 "3cc5772eb20009233caf06e9d8a0577824723b44e6648ee0a2aedb6cf9381953"
+    url "https://files.pythonhosted.org/packages/5c/5a/b46fa56bf322901eee5b0454a34343cdbdae202cd421775a8ee4e42fd519/pyjwt-2.11.0.tar.gz"
+    sha256 "35f95c1f0fbe5d5ba6e43f00271c275f7a1a4db1dab27bf708073b75318ea623"
   end
 
   resource "python-dateutil" do
@@ -555,8 +555,8 @@ class PaperlessNgx < Formula
   end
 
   resource "regex" do
-    url "https://files.pythonhosted.org/packages/ad/f2/638ef50852dc5741dc3bb3c7d4e773d637bc20232965ef8b6e7f6f7d4445/regex-2026.1.14.tar.gz"
-    sha256 "7bdd569b6226498001619751abe6ba3c9e3050f79cfe097e84f25b2856120e78"
+    url "https://files.pythonhosted.org/packages/0b/86/07d5056945f9ec4590b518171c4254a5925832eb727b56d3c38a7476f316/regex-2026.1.15.tar.gz"
+    sha256 "164759aa25575cbc0651bef59a0b18353e54300d79ace8084c818ad8ac72b7d5"
   end
 
   resource "requests" do
@@ -565,8 +565,8 @@ class PaperlessNgx < Formula
   end
 
   resource "rich" do
-    url "https://files.pythonhosted.org/packages/fb/d2/8920e102050a0de7bfabeb4c4614a49248cf8d5d7a8d01885fbb24dc767a/rich-14.2.0.tar.gz"
-    sha256 "73ff50c7c0c1c77c8243079283f4edb376f0f6442433aecb8ce7e6d0b92d1fe4"
+    url "https://files.pythonhosted.org/packages/a1/84/4831f881aa6ff3c976f6d6809b58cdfa350593ffc0dc3c58f5f6586780fb/rich-14.3.1.tar.gz"
+    sha256 "b8c5f568a3a749f9290ec6bddedf835cec33696bfc1e48bcfecb276c7386e4b8"
   end
 
   resource "rpds-py" do
@@ -610,8 +610,8 @@ class PaperlessNgx < Formula
   end
 
   resource "tqdm" do
-    url "https://files.pythonhosted.org/packages/a8/4b/29b4ef32e036bb34e4ab51796dd745cdba7ed47ad142a9f4a1eb8e0c744d/tqdm-4.67.1.tar.gz"
-    sha256 "f8aef9c52c08c13a65f30ea34f4e5aac3fd1a34959879d7e59e63027286627f2"
+    url "https://files.pythonhosted.org/packages/27/89/4b0001b2dab8df0a5ee2787dcbe771de75ded01f18f1f8d53dedeea2882b/tqdm-4.67.2.tar.gz"
+    sha256 "649aac53964b2cb8dec76a14b405a4c0d13612cb8933aae547dd144eacc99653"
   end
 
   resource "typing-extensions" do
@@ -655,8 +655,8 @@ class PaperlessNgx < Formula
   end
 
   resource "wcwidth" do
-    url "https://files.pythonhosted.org/packages/24/30/6b0809f4510673dc723187aeaf24c7f5459922d01e2f794277a3dfb90345/wcwidth-0.2.14.tar.gz"
-    sha256 "4d478375d31bc5395a3c55c40ccdf3354688364cd61c4f6adacaa9215d0b3605"
+    url "https://files.pythonhosted.org/packages/c2/62/a7c072fbfefb2980a00f99ca994279cb9ecf310cb2e6b2a4d2a28fe192b3/wcwidth-0.5.3.tar.gz"
+    sha256 "53123b7af053c74e9fe2e92ac810301f6139e64379031f7124574212fb3b4091"
   end
 
   resource "webencodings" do
