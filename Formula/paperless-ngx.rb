@@ -6,6 +6,7 @@ class PaperlessNgx < Formula
   url "https://github.com/paperless-ngx/paperless-ngx/archive/refs/tags/v2.20.6.tar.gz"
   sha256 "14ba1c2541d40ee98898f57000a76b4ae5ebfee17bc39973422f6741851e82a8"
   license "GPL-3.0-or-later"
+  revision 1
 
   bottle do
     root_url "https://ghcr.io/v2/ingmarstein/paperless-ngx"
@@ -17,6 +18,7 @@ class PaperlessNgx < Formula
   depends_on "autoconf" => :build
   depends_on "cmake" => :build
   depends_on "cython" => :build
+  depends_on "gettext" => :build
   depends_on "maturin" => :build
   depends_on "meson" => :build
   depends_on "mypy" => :build
@@ -70,8 +72,8 @@ class PaperlessNgx < Formula
   end
 
   resource "asgiref" do
-    url "https://files.pythonhosted.org/packages/76/b9/4db2509eabd14b4a8c71d1b24c8d5734c52b8560a7b1e1a8b56c8d25568b/asgiref-3.11.0.tar.gz"
-    sha256 "13acff32519542a1736223fb79a715acdebe24286d98e8b164a73085f40da2c4"
+    url "https://files.pythonhosted.org/packages/63/40/f03da1264ae8f7cfdbf9146542e5e7e8100a4c66ab48e791df9a03d3f6c0/asgiref-3.11.1.tar.gz"
+    sha256 "5f184dc43b7e763efe848065441eac62229c9f7b0475f41f80e207a114eda4ce"
   end
 
   resource "attrs" do
@@ -80,8 +82,8 @@ class PaperlessNgx < Formula
   end
 
   resource "babel" do
-    url "https://files.pythonhosted.org/packages/7d/6b/d52e42361e1aa00709585ecc30b3f9684b3ab62530771402248b1b1d6240/babel-2.17.0.tar.gz"
-    sha256 "0c54cffb19f690cdcc52a3b50bcbf71e07a808d1c80d549f2459b9d2cf0afb9d"
+    url "https://files.pythonhosted.org/packages/7d/b2/51899539b6ceeeb420d40ed3cd4b7a40519404f9baf3d4ac99dc413a834b/babel-2.18.0.tar.gz"
+    sha256 "b80b99a14bd085fcacfa15c9165f651fbb3406e66cc603abf11c5750937c992d"
   end
 
   resource "billiard" do
@@ -150,8 +152,8 @@ class PaperlessNgx < Formula
   end
 
   resource "dateparser" do
-    url "https://files.pythonhosted.org/packages/a9/30/064144f0df1749e7bb5faaa7f52b007d7c2d08ec08fed8411aba87207f68/dateparser-1.2.2.tar.gz"
-    sha256 "986316f17cb8cdc23ea8ce563027c5ef12fc725b6fb1d137c14ca08777c5ecf7"
+    url "https://files.pythonhosted.org/packages/3d/2c/668dfb8c073a5dde3efb80fa382de1502e3b14002fd386a8c1b0b49e92a9/dateparser-1.3.0.tar.gz"
+    sha256 "5bccf5d1ec6785e5be71cc7ec80f014575a09b4923e762f850e57443bddbf1a5"
   end
 
   resource "deprecated" do
@@ -165,8 +167,8 @@ class PaperlessNgx < Formula
   end
 
   resource "django" do
-    url "https://files.pythonhosted.org/packages/e6/e5/2671df24bf0ded831768ef79532e5a7922485411a5696f6d979568591a37/django-5.2.10.tar.gz"
-    sha256 "74df100784c288c50a2b5cad59631d71214f40f72051d5af3fdf220c20bdbbbe"
+    url "https://files.pythonhosted.org/packages/17/f2/3e57ef696b95067e05ae206171e47a8e53b9c84eec56198671ef9eaa51a6/django-5.2.11.tar.gz"
+    sha256 "7f2d292ad8b9ee35e405d965fbbad293758b858c34bbf7f3df551aeeac6f02d3"
   end
 
   resource "django-allauth" do
@@ -275,8 +277,8 @@ class PaperlessNgx < Formula
   end
 
   resource "granian" do
-    url "https://files.pythonhosted.org/packages/aa/22/93016f4f9e9115ba981f51fc17c7c369a34772f11a93043320a2a3d5c6ea/granian-2.6.1.tar.gz"
-    sha256 "d209065b12f18b6d7e78f1c16ff9444e5367dddeb41e3225c2cf024762740590"
+    url "https://files.pythonhosted.org/packages/e5/e5/c3a745a2c60cba6e67c5607fe6e18883fd2b7800fd7215511c526fab3872/granian-2.7.1.tar.gz"
+    sha256 "cc79292b24895db9441d32c3a9f11a4e19805d566bc77f9deb7ef18daac62e16"
   end
 
   resource "h11" do
@@ -565,8 +567,8 @@ class PaperlessNgx < Formula
   end
 
   resource "rich" do
-    url "https://files.pythonhosted.org/packages/a1/84/4831f881aa6ff3c976f6d6809b58cdfa350593ffc0dc3c58f5f6586780fb/rich-14.3.1.tar.gz"
-    sha256 "b8c5f568a3a749f9290ec6bddedf835cec33696bfc1e48bcfecb276c7386e4b8"
+    url "https://files.pythonhosted.org/packages/74/99/a4cab2acbb884f80e558b0771e97e21e939c5dfb460f488d19df485e8298/rich-14.3.2.tar.gz"
+    sha256 "e712f11c1a562a11843306f5ed999475f09ac31ffb64281f73ab29ffdda8b3b8"
   end
 
   resource "rpds-py" do
@@ -610,8 +612,8 @@ class PaperlessNgx < Formula
   end
 
   resource "tqdm" do
-    url "https://files.pythonhosted.org/packages/27/89/4b0001b2dab8df0a5ee2787dcbe771de75ded01f18f1f8d53dedeea2882b/tqdm-4.67.2.tar.gz"
-    sha256 "649aac53964b2cb8dec76a14b405a4c0d13612cb8933aae547dd144eacc99653"
+    url "https://files.pythonhosted.org/packages/09/a9/6ba95a270c6f1fbcd8dac228323f2777d886cb206987444e4bce66338dd4/tqdm-4.67.3.tar.gz"
+    sha256 "7d825f03f89244ef73f1d4ce193cb1774a8179fd96f31d7e1dcde62092b960bb"
   end
 
   resource "typing-extensions" do
@@ -655,8 +657,8 @@ class PaperlessNgx < Formula
   end
 
   resource "wcwidth" do
-    url "https://files.pythonhosted.org/packages/c2/62/a7c072fbfefb2980a00f99ca994279cb9ecf310cb2e6b2a4d2a28fe192b3/wcwidth-0.5.3.tar.gz"
-    sha256 "53123b7af053c74e9fe2e92ac810301f6139e64379031f7124574212fb3b4091"
+    url "https://files.pythonhosted.org/packages/35/a2/8e3becb46433538a38726c948d3399905a4c7cabd0df578ede5dc51f0ec2/wcwidth-0.6.0.tar.gz"
+    sha256 "cdc4e4262d6ef9a1a57e018384cbeb1208d8abbc64176027e2c2455c81313159"
   end
 
   resource "webencodings" do
@@ -675,8 +677,8 @@ class PaperlessNgx < Formula
   end
 
   resource "wrapt" do
-    url "https://files.pythonhosted.org/packages/49/2a/6de8a50cb435b7f42c46126cf1a54b2aab81784e74c8595c8e025e8f36d3/wrapt-2.0.1.tar.gz"
-    sha256 "9c9c635e78497cacb81e84f8b11b23e0aacac7a136e73b8e5b2109a1d9fc468f"
+    url "https://files.pythonhosted.org/packages/f7/37/ae31f40bec90de2f88d9597d0b5281e23ffe85b893a47ca5d9c05c63a4f6/wrapt-2.1.1.tar.gz"
+    sha256 "5fdcb09bf6db023d88f312bd0767594b414655d58090fc1c46b3414415f67fac"
   end
 
   resource "zstandard" do
@@ -732,9 +734,19 @@ class PaperlessNgx < Formula
 
     # templates
     (venv.site_packages/"templates").install Dir["src/documents/templates/*"]
-    inreplace venv.site_packages/"paperless/settings.py",
-          '"DIRS": []',
-          '"DIRS": [os.path.join(BASE_DIR, \'templates\')]'
+    inreplace venv.site_packages/"paperless/settings.py" do |s|
+      s.sub! '"DIRS": []', '"DIRS": [os.path.join(BASE_DIR, \'templates\')]'
+      # Apply thread-safety shim for macOS/spawn to fix _strptime and optparse race conditions
+      s.sub! "import datetime", <<~PYTHON
+        import datetime
+        import optparse
+
+        try:
+            datetime.datetime.strptime("20210101", "%Y%m%d")
+        except Exception:
+            pass
+      PYTHON
+    end
 
     # The default value for PAPERLESS_CONSUMER_POLLING is 0 which means
     # using inotify. This is not available on macOS, so we set it to a
