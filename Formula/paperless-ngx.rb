@@ -6,7 +6,7 @@ class PaperlessNgx < Formula
   url "https://github.com/paperless-ngx/paperless-ngx/archive/refs/tags/v2.20.6.tar.gz"
   sha256 "14ba1c2541d40ee98898f57000a76b4ae5ebfee17bc39973422f6741851e82a8"
   license "GPL-3.0-or-later"
-  revision 1
+  revision 2
 
   bottle do
     root_url "https://ghcr.io/v2/ingmarstein/paperless-ngx"
@@ -872,7 +872,13 @@ class PaperlessNgx < Formula
   end
 
   service do
-    run [HOMEBREW_PREFIX/"bin/s6-svscan", opt_libexec/"s6_services"]
+    run [
+      HOMEBREW_PREFIX/"bin/s6-softlimit",
+      "-o", "65535",
+      "--",
+      HOMEBREW_PREFIX/"bin/s6-svscan",
+      opt_libexec/"s6_services"
+    ]
     # The service requires:
     # - PATH with runtime binaries
     # - HOME directory for gnupg
