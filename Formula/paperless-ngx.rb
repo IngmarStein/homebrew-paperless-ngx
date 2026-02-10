@@ -693,7 +693,7 @@ class PaperlessNgx < Formula
 
   def install
     # build frontend
-    system "pnpm", "--dir", "src-ui", "install"
+    system "pnpm", "--dir", "src-ui", "install", "--frozen-lockfile"
     chdir "src-ui" do
       with_env(CYPRESS_INSTALL_BINARY: "0", NG_CLI_ANALYTICS: "false") do
         system "ng", "build", "--configuration", "production"
@@ -701,6 +701,7 @@ class PaperlessNgx < Formula
     end
 
     # build backend
+    ENV["PIP_DISABLE_PIP_VERSION_CHECK"] = "1"
     venv = virtualenv_install_with_resources without: ["zxing-cpp"]
     python_executable = venv.root/"bin/python"
     manage_py_script = venv.site_packages/"manage.py"
@@ -712,13 +713,11 @@ class PaperlessNgx < Formula
     venv.pip_install resource("zxing-cpp")
 
     # download NLTK data
-    %w[snowball_data stopwords punkt_tab].each do |nltk_data|
-      system python_executable,
-         "-W", "ignore::RuntimeWarning",
-         "-m", "nltk.downloader",
-         "-d", libexec/"nltk_data",
-         nltk_data
-    end
+    system python_executable,
+       "-W", "ignore::RuntimeWarning",
+       "-m", "nltk.downloader",
+       "-d", libexec/"nltk_data",
+       "snowball_data", "stopwords", "punkt_tab"
 
     static_dir = libexec/"static"
     chdir "src" do
