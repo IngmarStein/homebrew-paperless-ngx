@@ -712,13 +712,11 @@ class PaperlessNgx < Formula
     venv.pip_install resource("zxing-cpp")
 
     # download NLTK data
-    %w[snowball_data stopwords punkt_tab].each do |nltk_data|
-      system python_executable,
-         "-W", "ignore::RuntimeWarning",
-         "-m", "nltk.downloader",
-         "-d", libexec/"nltk_data",
-         nltk_data
-    end
+    system python_executable,
+       "-W", "ignore::RuntimeWarning",
+       "-m", "nltk.downloader",
+       "-d", libexec/"nltk_data",
+       "snowball_data", "stopwords", "punkt_tab"
 
     static_dir = libexec/"static"
     chdir "src" do
