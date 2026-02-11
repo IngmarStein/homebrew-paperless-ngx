@@ -6,10 +6,12 @@ class PaperlessNgx < Formula
   url "https://github.com/paperless-ngx/paperless-ngx/releases/download/v2.20.6/paperless-ngx-v2.20.6.tar.xz"
   sha256 "febfdc3426fc04da33e42b0ffa5bb315172eea2d18796d9873c1fb863356e1ee"
   license "GPL-3.0-or-later"
-  revision 3
+  revision 2
 
   bottle do
     root_url "https://ghcr.io/v2/ingmarstein/paperless-ngx"
+    sha256 arm64_tahoe:  "066ec61adef25798d180b16bc01fc1e08111c8b7993fe3df9677990647889702"
+    sha256 x86_64_linux: "92ebbded4d625d04ddae851c89226554f6cf6f1cf44483bc0c2e076dd3be26a2"
   end
 
   depends_on "autoconf" => :build
@@ -17,6 +19,7 @@ class PaperlessNgx < Formula
   depends_on "cython" => :build
   depends_on "gettext" => :build
   depends_on "maturin" => :build
+  depends_on "meson" => :build
   depends_on "mypy" => :build
   depends_on "patchelf" => :build
   depends_on "pkgconf" => :build
@@ -570,30 +573,9 @@ class PaperlessNgx < Formula
     sha256 "dd8ff7cf90014af0c0f787eea34794ebf6415242ee1d6fa91eaba725cc441e84"
   end
 
-  on_macos do
-    on_arm do
-      # pre-built wheel avoids ~15 min source compilation
-      resource "scikit-learn" do
-        url "https://files.pythonhosted.org/packages/3c/30/9029e54e17b87cb7d50d51a5926429c683d5b4c1732f0507a6c3bed9bf65/scikit_learn-1.7.2-cp314-cp314-macosx_12_0_arm64.whl"
-        sha256 "f95dc55b7902b91331fa4e5845dd5bde0580c9cd9612b1b2791b7e80c3d32615"
-      end
-    end
-
-    on_intel do
-      # pre-built wheel avoids ~15 min source compilation
-      resource "scikit-learn" do
-        url "https://files.pythonhosted.org/packages/d9/82/dee5acf66837852e8e68df6d8d3a6cb22d3df997b733b032f513d95205b7/scikit_learn-1.7.2-cp314-cp314-macosx_10_13_x86_64.whl"
-        sha256 "fa8f63940e29c82d1e67a45d5297bdebbcb585f5a5a50c4914cc2e852ab77f33"
-      end
-    end
-  end
-
-  on_linux do
-    # pre-built wheel avoids ~15 min source compilation
-    resource "scikit-learn" do
-      url "https://files.pythonhosted.org/packages/60/18/4a52c635c71b536879f4b971c2cedf32c35ee78f48367885ed8025d1f7ee/scikit_learn-1.7.2-cp314-cp314-manylinux2014_x86_64.manylinux_2_17_x86_64.whl"
-      sha256 "9656e4a53e54578ad10a434dc1f993330568cfee176dff07112b8785fb413106"
-    end
+  resource "scikit-learn" do
+    url "https://files.pythonhosted.org/packages/98/c2/a7855e41c9d285dfe86dc50b250978105dce513d6e459ea66a6aeb0e1e0c/scikit_learn-1.7.2.tar.gz"
+    sha256 "20e9e49ecd130598f1ca38a1d85090e1a600147b9c02fa6f15d69cb53d968fda"
   end
 
   resource "setproctitle" do
@@ -710,18 +692,11 @@ class PaperlessNgx < Formula
     # build backend
     ENV["PIP_DISABLE_PIP_VERSION_CHECK"] = "1"
     ENV["CMAKE_BUILD_PARALLEL_LEVEL"] = ENV["HOMEBREW_MAKE_JOBS"] if ENV["HOMEBREW_MAKE_JOBS"]
-    venv = virtualenv_install_with_resources without: ["zxing-cpp", "scikit-learn"]
+    venv = virtualenv_install_with_resources without: ["zxing-cpp"]
     python_executable = venv.root/"bin/python"
     manage_py_script = venv.site_packages/"manage.py"
     celery_executable = venv.root/"bin/celery"
     granian_executable = venv.root/"bin/granian"
-    # install scikit-learn from pre-built wheel (avoids ~15 min source compilation)
-    resource("scikit-learn").stage do
-      whl = Dir["*.whl"].first
-      system python_executable, "-m", "pip", "--python=#{venv.root}/bin/python",
-             "install", "-v", "--no-deps", "--no-index", "--no-compile", "--ignore-installed",
-             whl
-    end
     # set MACOSX_DEPLOYMENT_TARGET only for zxing-cpp to avoid
     # `invalid deployment target` error
     ENV["MACOSX_DEPLOYMENT_TARGET"] = MacOS.version if OS.mac?

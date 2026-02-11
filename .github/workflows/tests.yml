@@ -32,6 +32,15 @@ jobs:
           key: ${{ matrix.os }}-rubygems-${{ steps.set-up-homebrew.outputs.gems-hash }}
           restore-keys: ${{ matrix.os }}-rubygems-
 
+      - name: Cache Homebrew downloads
+        uses: actions/cache@v5
+        with:
+          path: |
+            ~/Library/Caches/Homebrew/downloads
+            ~/.cache/Homebrew/downloads
+          key: ${{ matrix.os }}-homebrew-downloads-${{ hashFiles('Formula/paperless-ngx.rb') }}
+          restore-keys: ${{ matrix.os }}-homebrew-downloads-
+
       - name: Free Disk Space
         if: runner.os == 'Linux'
         uses: endersonmenezes/free-disk-space@v3
