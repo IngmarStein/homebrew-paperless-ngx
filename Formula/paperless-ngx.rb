@@ -10,6 +10,8 @@ class PaperlessNgx < Formula
 
   bottle do
     root_url "https://ghcr.io/v2/ingmarstein/paperless-ngx"
+    sha256 arm64_tahoe:  "066ec61adef25798d180b16bc01fc1e08111c8b7993fe3df9677990647889702"
+    sha256 x86_64_linux: "92ebbded4d625d04ddae851c89226554f6cf6f1cf44483bc0c2e076dd3be26a2"
   end
 
   depends_on "autoconf" => :build
@@ -859,7 +861,13 @@ class PaperlessNgx < Formula
   end
 
   service do
-    run [HOMEBREW_PREFIX/"bin/s6-svscan", opt_libexec/"s6_services"]
+    run [
+      HOMEBREW_PREFIX/"bin/s6-softlimit",
+      "-o", "65535",
+      "--",
+      HOMEBREW_PREFIX/"bin/s6-svscan",
+      opt_libexec/"s6_services"
+    ]
     # The service requires:
     # - PATH with runtime binaries
     # - HOME directory for gnupg
