@@ -3,18 +3,15 @@ class PaperlessNgx < Formula
 
   desc "Scan, index and archive all your physical documents"
   homepage "https://docs.paperless-ngx.com/"
-  url "https://github.com/paperless-ngx/paperless-ngx/archive/refs/tags/v2.20.6.tar.gz"
-  sha256 "14ba1c2541d40ee98898f57000a76b4ae5ebfee17bc39973422f6741851e82a8"
+  url "https://github.com/paperless-ngx/paperless-ngx/releases/download/v2.20.6/paperless-ngx-v2.20.6.tar.xz"
+  sha256 "febfdc3426fc04da33e42b0ffa5bb315172eea2d18796d9873c1fb863356e1ee"
   license "GPL-3.0-or-later"
-  revision 1
+  revision 2
 
   bottle do
     root_url "https://ghcr.io/v2/ingmarstein/paperless-ngx"
-    sha256 arm64_tahoe:  "68c63bbc3c4018d134fb304169b21e63e9ca638c6281b59419194d908ab393c0"
-    sha256 x86_64_linux: "acfdd18d1e73ecac5267d7cbb6e2ec14f1bfe843900d626532e33279aaee42c8"
   end
 
-  depends_on "angular-cli" => :build
   depends_on "autoconf" => :build
   depends_on "cmake" => :build
   depends_on "cython" => :build
@@ -22,10 +19,8 @@ class PaperlessNgx < Formula
   depends_on "maturin" => :build
   depends_on "meson" => :build
   depends_on "mypy" => :build
-  depends_on "node" => :build
   depends_on "patchelf" => :build
   depends_on "pkgconf" => :build
-  depends_on "pnpm" => :build
   depends_on "python-setuptools" => :build
   depends_on "rust" => :build
   depends_on "certifi"
@@ -692,16 +687,9 @@ class PaperlessNgx < Formula
   end
 
   def install
-    # build frontend
-    system "pnpm", "--dir", "src-ui", "install", "--frozen-lockfile"
-    chdir "src-ui" do
-      with_env(CYPRESS_INSTALL_BINARY: "0", NG_CLI_ANALYTICS: "false") do
-        system "ng", "build", "--configuration", "production"
-      end
-    end
-
     # build backend
     ENV["PIP_DISABLE_PIP_VERSION_CHECK"] = "1"
+    ENV["CMAKE_BUILD_PARALLEL_LEVEL"] = ENV["HOMEBREW_MAKE_JOBS"] if ENV["HOMEBREW_MAKE_JOBS"]
     venv = virtualenv_install_with_resources without: ["zxing-cpp"]
     python_executable = venv.root/"bin/python"
     manage_py_script = venv.site_packages/"manage.py"
