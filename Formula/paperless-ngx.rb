@@ -6,6 +6,7 @@ class PaperlessNgx < Formula
   url "https://github.com/paperless-ngx/paperless-ngx/archive/refs/tags/v2.20.7.tar.gz"
   sha256 "85c4db481cad554825f5ec3343ce6a50fa74a4a9103d1c818cb83046aea71a6b"
   license "GPL-3.0-or-later"
+  revision 1
 
   bottle do
     root_url "https://ghcr.io/v2/ingmarstein/paperless-ngx"
@@ -50,6 +51,7 @@ class PaperlessNgx < Formula
   depends_on "s6"
   depends_on "scipy"
   depends_on "tesseract-lang"
+  depends_on "zxing-cpp"
 
   uses_from_macos "libxml2"
   uses_from_macos "libxslt"
@@ -261,8 +263,8 @@ class PaperlessNgx < Formula
   end
 
   resource "filelock" do
-    url "https://files.pythonhosted.org/packages/1d/65/ce7f1b70157833bf3cb851b556a37d4547ceafc158aa9b34b36782f23696/filelock-3.20.3.tar.gz"
-    sha256 "18c57ee915c7ec61cff0ecf7f0f869936c7c30191bb0cf406f1341778d0834e1"
+    url "https://files.pythonhosted.org/packages/db/81/cfe075b6ce057ce595c61d52a0bd6452f425f923b6c02ecee6c0c8d6e5a7/filelock-3.20.4.tar.gz"
+    sha256 "92b98bb6be1a4e6c1b00f8aedae011c6e2d367c195000a049daa34f554af3d94"
   end
 
   resource "flower" do
@@ -700,15 +702,11 @@ class PaperlessNgx < Formula
     end
 
     # build backend
-    venv = virtualenv_install_with_resources without: ["zxing-cpp"]
+    venv = virtualenv_install_with_resources
     python_executable = venv.root/"bin/python"
     manage_py_script = venv.site_packages/"manage.py"
     celery_executable = venv.root/"bin/celery"
     granian_executable = venv.root/"bin/granian"
-    # set MACOSX_DEPLOYMENT_TARGET only for zxing-cpp to avoid
-    # `invalid deployment target` error
-    ENV["MACOSX_DEPLOYMENT_TARGET"] = MacOS.version if OS.mac?
-    venv.pip_install resource("zxing-cpp")
 
     # download NLTK data
     system python_executable,
