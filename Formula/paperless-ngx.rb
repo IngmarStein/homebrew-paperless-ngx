@@ -58,9 +58,10 @@ class PaperlessNgx < Formula
   uses_from_macos "zlib"
 
   # fido2: breaking change in fido2-2.0.0, so pinned to 1.2.0
-  # psycopg-c: breaks `brew update-python-resources` (which can't find pg_config), hence a manual addition below
-  pypi_packages exclude_packages: %w[certifi cffi cryptography pillow scipy numpy pycparser],
-                extra_packages:   ["granian[uvloop]", "fido2==1.2.0", "psycopg-pool"]
+  # psycopg-c: breaks `brew update-python-resources` (which can't find pg_config),
+  # hence a manual addition at the end of the file using `send` to prevent it from being removed.
+  pypi_packages exclude_packages: %w[certifi cffi cryptography pillow scipy numpy pycparser psycopg-c],
+                extra_packages:   ["granian[uvloop]", "fido2==1.2.0", "psycopg-pool", "psycopg"]
 
   resource "amqp" do
     url "https://files.pythonhosted.org/packages/79/fc/ec94a357dfc6683d8c86f8b4cfa5416a4c36b28052ec8260c77aca96a443/amqp-5.3.1.tar.gz"
@@ -477,9 +478,9 @@ class PaperlessNgx < Formula
     sha256 "28cde192929c8e7321de85de1ddbe736f1375148b02f2e17edd840042b1be855"
   end
 
-  resource "psycopg-c" do
-    url "https://files.pythonhosted.org/packages/68/27/33699874745d7bb195e78fd0a97349908b64d3ec5fea7b8e5e52f56df04c/psycopg_c-3.2.12.tar.gz"
-    sha256 "1c80042067d5df90d184c6fbd58661350b3620f99d87a01c882953c4d5dfa52b"
+  resource "psycopg" do
+    url "https://files.pythonhosted.org/packages/e0/1a/7d9ef4fdc13ef7f15b934c393edc97a35c281bb7d3c3329fbfcbe915a7c2/psycopg-3.3.2.tar.gz"
+    sha256 "707a67975ee214d200511177a6a80e56e654754c9afca06a7194ea6bbfde9ca7"
   end
 
   resource "psycopg-pool" do
@@ -934,5 +935,10 @@ class PaperlessNgx < Formula
         Process.wait(pid)
       end
     end
+  end
+
+  send(:resource, "psycopg-c") do
+    url "https://files.pythonhosted.org/packages/48/f5/13c6bf88f6ccadc2930066cc5369cee431fc2c87a1ddb621fc27cfe7d8f3/psycopg_c-3.3.2.tar.gz"
+    sha256 "a65927731d394cc77bbf85d02d0311d7843616a4a627f3e816e94ad3a052ef83"
   end
 end
