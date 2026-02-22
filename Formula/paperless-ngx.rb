@@ -3,10 +3,9 @@ class PaperlessNgx < Formula
 
   desc "Scan, index and archive all your physical documents"
   homepage "https://docs.paperless-ngx.com/"
-  url "https://github.com/paperless-ngx/paperless-ngx/archive/refs/tags/v2.20.7.tar.gz"
-  sha256 "85c4db481cad554825f5ec3343ce6a50fa74a4a9103d1c818cb83046aea71a6b"
+  url "https://github.com/paperless-ngx/paperless-ngx/archive/refs/tags/v2.20.8.tar.gz"
+  sha256 "3d8502e73d01f27d2981057c708074373017806bf31e62daaad557fc9cc5b111"
   license "GPL-3.0-or-later"
-  revision 1
 
   bottle do
     root_url "https://ghcr.io/v2/ingmarstein/paperless-ngx"
