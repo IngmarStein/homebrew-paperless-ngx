@@ -10,6 +10,7 @@ class ScikitLearn < Formula
   depends_on "meson" => :build
   depends_on "ninja" => :build
   depends_on "pkgconf" => :build
+  depends_on "libomp"
   depends_on "numpy"
   depends_on "python@3.14"
   depends_on "scipy"
