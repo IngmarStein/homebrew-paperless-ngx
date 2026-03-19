@@ -45,6 +45,7 @@ class PaperlessNgx < Formula
   depends_on "python@3.14"
   depends_on "qpdf"
   depends_on "s6"
+  depends_on "scikit-learn"
   depends_on "scipy"
   depends_on "tesseract-lang"
   depends_on "zxing-cpp"
@@ -56,7 +57,10 @@ class PaperlessNgx < Formula
   # fido2: breaking change in fido2-2.0.0, so pinned to 1.2.0
   # psycopg-c: breaks `brew update-python-resources` (which can't find pg_config),
   # hence a manual addition at the end of the file using `send` to prevent it from being removed.
-  pypi_packages exclude_packages: %w[certifi cffi cryptography pillow scipy numpy pycparser psycopg-c],
+  pypi_packages exclude_packages: %w[
+                  certifi cffi cryptography joblib numpy pillow
+                  pycparser psycopg-c scikit-learn scipy threadpoolctl
+                ],
                 extra_packages:   ["granian[uvloop]", "fido2==1.2.0", "psycopg-pool", "psycopg"]
 
   resource "amqp" do
@@ -359,11 +363,6 @@ class PaperlessNgx < Formula
     sha256 "0137fb05990d35f1275a587e9aee6d56da821fc83491a0fb838183be43f66d6d"
   end
 
-  resource "joblib" do
-    url "https://files.pythonhosted.org/packages/41/f2/d34e8b3a08a9cc79a50b2208a93dce981fe615b64d5a4d4abee421d898df/joblib-1.5.3.tar.gz"
-    sha256 "8561a3269e6801106863fd0d6d84bb737be9e7631e33aaed3fb9ce5953688da3"
-  end
-
   resource "jsonschema" do
     url "https://files.pythonhosted.org/packages/b3/fc/e067678238fa451312d4c62bf6e6cf5ec56375422aee02f9cb5f909b3047/jsonschema-4.26.0.tar.gz"
     sha256 "0c26707e2efad8aa1bfc5b7ce170f3fccc2e4918ff85989ba9ffa9facb2be326"
@@ -574,11 +573,6 @@ class PaperlessNgx < Formula
     sha256 "dd8ff7cf90014af0c0f787eea34794ebf6415242ee1d6fa91eaba725cc441e84"
   end
 
-  resource "scikit-learn" do
-    url "https://files.pythonhosted.org/packages/98/c2/a7855e41c9d285dfe86dc50b250978105dce513d6e459ea66a6aeb0e1e0c/scikit_learn-1.7.2.tar.gz"
-    sha256 "20e9e49ecd130598f1ca38a1d85090e1a600147b9c02fa6f15d69cb53d968fda"
-  end
-
   resource "setproctitle" do
     url "https://files.pythonhosted.org/packages/8d/48/49393a96a2eef1ab418b17475fb92b8fcfad83d099e678751b05472e69de/setproctitle-1.3.7.tar.gz"
     sha256 "bc2bc917691c1537d5b9bca1468437176809c7e11e5694ca79a9ca12345dcb9e"
@@ -592,11 +586,6 @@ class PaperlessNgx < Formula
   resource "sqlparse" do
     url "https://files.pythonhosted.org/packages/90/76/437d71068094df0726366574cf3432a4ed754217b436eb7429415cf2d480/sqlparse-0.5.5.tar.gz"
     sha256 "e20d4a9b0b8585fdf63b10d30066c7c94c5d7a7ec47c889a2d83a3caa93ff28e"
-  end
-
-  resource "threadpoolctl" do
-    url "https://files.pythonhosted.org/packages/b7/4d/08c89e34946fce2aec4fbb45c9016efd5f4d7f24af8e5d93296e935631d8/threadpoolctl-3.6.0.tar.gz"
-    sha256 "8ab8b4aa3491d812b623328249fab5302a68d2d71745c8a4c719a2fcaba9f44e"
   end
 
   resource "tika-client" do
