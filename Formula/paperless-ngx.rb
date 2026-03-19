@@ -731,7 +731,7 @@ class PaperlessNgx < Formula
     # Set OMP_NUM_THREADS to 1 on macOS because of
     #  https://github.com/NixOS/nixpkgs/issues/240591
     #  https://github.com/NixOS/nixpkgs/pull/299008
-    rm_f buildpath/"paperless.conf"
+    rm buildpath/"paperless.conf"
     (buildpath/"paperless.conf").write <<~SH
       PAPERLESS_CONFIGURATION_PATH="#{etc}/paperless-ngx/paperless.conf"
       PAPERLESS_CONSUMPTION_DIR="#{var}/paperless-ngx/consume"
