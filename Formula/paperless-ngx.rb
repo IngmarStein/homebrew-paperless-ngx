@@ -3,8 +3,8 @@ class PaperlessNgx < Formula
 
   desc "Scan, index and archive all your physical documents"
   homepage "https://docs.paperless-ngx.com/"
-  url "https://github.com/paperless-ngx/paperless-ngx/archive/refs/tags/v2.20.11.tar.gz"
-  sha256 "601f2e273e42ef519b4388d6bbdc3a6fc9dd6baa20d21ad98ddee150631b562e"
+  url "https://github.com/paperless-ngx/paperless-ngx/releases/download/v2.20.11/paperless-ngx-v2.20.11.tar.xz"
+  sha256 "b4337d47b8b79c3ec7f1ef7e57afe1d101bac5d7622c27cd2c21bf875857fcbd"
   license "GPL-3.0-or-later"
 
   bottle do
@@ -13,18 +13,14 @@ class PaperlessNgx < Formula
     sha256 x86_64_linux: "b011c580d4c6956975bf5683caa75ea11f06c2c73374632991f5e13ba9e920b9"
   end
 
-  depends_on "angular-cli" => :build
   depends_on "autoconf" => :build
   depends_on "cmake" => :build
   depends_on "cython" => :build
-  depends_on "gettext" => :build
   depends_on "maturin" => :build
   depends_on "meson" => :build
   depends_on "mypy" => :build
-  depends_on "node" => :build
   depends_on "patchelf" => :build
   depends_on "pkgconf" => :build
-  depends_on "pnpm" => :build
   depends_on "python-setuptools" => :build
   depends_on "rust" => :build
   depends_on "certifi"
@@ -693,14 +689,6 @@ class PaperlessNgx < Formula
   end
 
   def install
-    # build frontend
-    system "pnpm", "--dir", "src-ui", "install"
-    chdir "src-ui" do
-      with_env(CYPRESS_INSTALL_BINARY: "0", NG_CLI_ANALYTICS: "false") do
-        system "ng", "build", "--configuration", "production"
-      end
-    end
-
     # build backend
     venv = virtualenv_install_with_resources
     python_executable = venv.root/"bin/python"
@@ -715,17 +703,9 @@ class PaperlessNgx < Formula
        "-d", libexec/"nltk_data",
        "snowball_data", "stopwords", "punkt_tab"
 
+    # install pre-built static files (frontend, admin, DRF, etc.)
     static_dir = libexec/"static"
-    chdir "src" do
-      with_env(PAPERLESS_STATICDIR: static_dir) do
-        system python_executable, "manage.py", "collectstatic", "--clear", "--no-input"
-        system python_executable, "manage.py", "compilemessages"
-      end
-    end
-
-    # frontend static files
-    mkdir_p (static_dir/"frontend")
-    (static_dir/"frontend").install Dir["src/documents/static/frontend/*"]
+    static_dir.install Dir["static/*"]
 
     # templates
     (venv.site_packages/"templates").install Dir["src/documents/templates/*"]
@@ -751,6 +731,7 @@ class PaperlessNgx < Formula
     # Set OMP_NUM_THREADS to 1 on macOS because of
     #  https://github.com/NixOS/nixpkgs/issues/240591
     #  https://github.com/NixOS/nixpkgs/pull/299008
+    rm_f buildpath/"paperless.conf"
     (buildpath/"paperless.conf").write <<~SH
       PAPERLESS_CONFIGURATION_PATH="#{etc}/paperless-ngx/paperless.conf"
       PAPERLESS_CONSUMPTION_DIR="#{var}/paperless-ngx/consume"
