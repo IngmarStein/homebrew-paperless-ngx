@@ -61,19 +61,6 @@ jobs:
             --version="$version" \
             ingmarstein/paperless-ngx/paperless-ngx
 
-      - name: Check for scikit-learn update
-        if: steps.livecheck.outputs.outdated == 'true'
-        id: sklearn-check
-        working-directory: ${{ steps.set-up-homebrew.outputs.repository-path }}
-        run: |
-          # Check if scikit-learn resource version changed in the updated formula
-          # (update-python-resources may have updated it)
-          if git diff --quiet Formula/scikit-learn.rb 2>/dev/null; then
-            echo "sklearn_changed=false" >> "$GITHUB_OUTPUT"
-          else
-            echo "sklearn_changed=true" >> "$GITHUB_OUTPUT"
-          fi
-
       - name: Create pull request
         if: steps.livecheck.outputs.outdated == 'true'
         working-directory: ${{ steps.set-up-homebrew.outputs.repository-path }}
