@@ -27,6 +27,7 @@ class PaperlessNgx < Formula
   depends_on "cryptography"
   depends_on "ghostscript"
   depends_on "gnupg"
+  depends_on "granian"
   depends_on "imagemagick"
   depends_on "img2pdf"
   depends_on "jbig2enc"
@@ -56,10 +57,11 @@ class PaperlessNgx < Formula
   # psycopg-c: breaks `brew update-python-resources` (which can't find pg_config),
   # hence a manual addition at the end of the file using `send` to prevent it from being removed.
   pypi_packages exclude_packages: %w[
-                  certifi cffi cryptography joblib numpy pillow
-                  pycparser psycopg-c scikit-learn scipy threadpoolctl
+                  certifi cffi click cryptography granian joblib
+                  numpy pillow pycparser psycopg-c scikit-learn
+                  scipy threadpoolctl uvloop
                 ],
-                extra_packages:   ["granian[uvloop]", "fido2==1.2.0", "psycopg-pool", "psycopg"]
+                extra_packages:   ["fido2==1.2.0", "psycopg-pool", "psycopg"]
 
   resource "amqp" do
     url "https://files.pythonhosted.org/packages/79/fc/ec94a357dfc6683d8c86f8b4cfa5416a4c36b28052ec8260c77aca96a443/amqp-5.3.1.tar.gz"
@@ -124,11 +126,6 @@ class PaperlessNgx < Formula
   resource "charset-normalizer" do
     url "https://files.pythonhosted.org/packages/7b/60/e3bec1881450851b087e301bedc3daa9377a4d45f1c26aa90b0b235e38aa/charset_normalizer-3.4.6.tar.gz"
     sha256 "1ae6b62897110aa7c79ea2f5dd38d1abca6db663687c0b1ad9aed6f6bae3d9d6"
-  end
-
-  resource "click" do
-    url "https://files.pythonhosted.org/packages/3d/fa/656b739db8587d7b5dfa22e22ed02566950fbfbcdc20311993483657a5c0/click-8.3.1.tar.gz"
-    sha256 "12ff4785d337a1bb490bb7e9c2b1ee5da3112e94a8622f26a6c77f5d2fc6842a"
   end
 
   resource "click-didyoumean" do
@@ -274,11 +271,6 @@ class PaperlessNgx < Formula
   resource "gotenberg-client" do
     url "https://files.pythonhosted.org/packages/61/6d/07ea213c146bbe91dffebff2d8f4dc61e7076d3dd34d4fd1467f9163e752/gotenberg_client-0.12.0.tar.gz"
     sha256 "1ab50878024469fc003c414ee9810ceeb00d4d7d7c36bd2fb75318fbff139e9b"
-  end
-
-  resource "granian" do
-    url "https://files.pythonhosted.org/packages/57/19/d4ea523715ba8dd2ed295932cc3dda6bb197060f78aada6e886ff08587b2/granian-2.7.2.tar.gz"
-    sha256 "cdae2f3a26fa998d41fefad58f1d1c84a0b035a6cc9377addd81b51ba82f927f"
   end
 
   resource "h11" do
@@ -626,11 +618,6 @@ class PaperlessNgx < Formula
     sha256 "1b62b6884944a57dbe321509ab94fd4d3b307075e0c2eae991ac71ee15ad38ed"
   end
 
-  resource "uvloop" do
-    url "https://files.pythonhosted.org/packages/06/f0/18d39dbd1971d6d62c4629cc7fa67f74821b0dc1f5a77af43719de7936a7/uvloop-0.22.1.tar.gz"
-    sha256 "6c84bae345b9147082b17371e3dd5d42775bddce91f885499017f4607fdaf39f"
-  end
-
   resource "vine" do
     url "https://files.pythonhosted.org/packages/bd/e4/d07b5f29d283596b9727dd5275ccbceb63c44a1a82aa9e4bfd20426762ac/vine-5.1.0.tar.gz"
     sha256 "8b62e981d35c41049211cf62a0a1242d8c1ee9bd15bb196ce38aefd6799e61e0"
@@ -682,7 +669,7 @@ class PaperlessNgx < Formula
     python_executable = venv.root/"bin/python"
     manage_py_script = venv.site_packages/"manage.py"
     celery_executable = venv.root/"bin/celery"
-    granian_executable = venv.root/"bin/granian"
+    granian_executable = Formula["granian"].opt_bin/"granian"
 
     # download NLTK data
     system python_executable,
@@ -878,7 +865,7 @@ class PaperlessNgx < Formula
     begin
       output_log = testpath/"output.log"
       pid = spawn(
-        opt_libexec/"bin/granian",
+        Formula["granian"].opt_bin/"granian",
         "--interface", "asginl",
         "--ws", "paperless.asgi:application",
         [:out, :err] => output_log.to_s
