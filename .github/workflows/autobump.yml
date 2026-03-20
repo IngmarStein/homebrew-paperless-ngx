@@ -23,69 +23,75 @@ jobs:
       - name: Set up git
         uses: Homebrew/actions/git-user-config@master
 
-      - name: Check for new paperless-ngx release
+      - name: Check for outdated formulae
         id: livecheck
         run: |
-          info=$(brew livecheck ingmarstein/paperless-ngx/paperless-ngx --json | jq -r '.[0]')
-          current=$(echo "$info" | jq -r '.version.current')
-          latest=$(echo "$info" | jq -r '.version.latest')
-          outdated=$(echo "$info" | jq -r '.version.outdated')
-          {
-            echo "current=$current"
-            echo "latest=$latest"
-            echo "outdated=$outdated"
-          } >> "$GITHUB_OUTPUT"
-          echo "paperless-ngx: $current → $latest (outdated: $outdated)"
+          brew livecheck --tap ingmarstein/paperless-ngx --json | \
+            jq -c '[.[] | select(.version.outdated == true)]' > /tmp/outdated.json
+          count=$(jq length /tmp/outdated.json)
+          echo "count=$count" >> "$GITHUB_OUTPUT"
+          if [ "$count" -eq 0 ]; then
+            echo "All formulae are up to date"
+          else
+            jq -r '.[] | "\(.formula): \(.version.current) → \(.version.latest)"' /tmp/outdated.json
+          fi
 
-      - name: Bump formula version
-        if: steps.livecheck.outputs.outdated == 'true'
+      - name: Bump outdated formulae
+        if: steps.livecheck.outputs.count != '0'
         working-directory: ${{ steps.set-up-homebrew.outputs.repository-path }}
         env:
           HOMEBREW_GITHUB_API_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: |
-          version="${{ steps.livecheck.outputs.latest }}"
-          echo "Bumping paperless-ngx to $version"
-          brew bump-formula-pr \
-            --write-only \
-            --no-audit \
-            --version="$version" \
-            ingmarstein/paperless-ngx/paperless-ngx
-
-      - name: Update Python resources
-        if: steps.livecheck.outputs.outdated == 'true'
-        working-directory: ${{ steps.set-up-homebrew.outputs.repository-path }}
-        run: |
-          version="${{ steps.livecheck.outputs.latest }}"
-          brew update-python-resources \
-            --ignore-non-pypi-packages \
-            --version="$version" \
-            ingmarstein/paperless-ngx/paperless-ngx
-
-      - name: Create pull request
-        if: steps.livecheck.outputs.outdated == 'true'
-        working-directory: ${{ steps.set-up-homebrew.outputs.repository-path }}
-        env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          version="${{ steps.livecheck.outputs.latest }}"
-          branch="autobump/paperless-ngx-${version}"
+          jq -c '.[]' /tmp/outdated.json | while IFS= read -r entry; do
+            formula=$(echo "$entry" | jq -r '.formula')
+            current=$(echo "$entry" | jq -r '.version.current')
+            latest=$(echo "$entry" | jq -r '.version.latest')
+            # Extract short name (e.g. "paperless-ngx" from "ingmarstein/paperless-ngx/paperless-ngx")
+            name=$(echo "$formula" | awk -F/ '{print $NF}')
+            branch="autobump/${name}-${latest}"
 
-          # Check if PR already exists
-          existing=$(gh pr list --head "$branch" --json number --jq '.[0].number' 2>/dev/null || true)
-          if [ -n "$existing" ]; then
-            echo "PR #$existing already exists for $version, skipping"
-            exit 0
-          fi
+            echo "::group::${name} ${current} → ${latest}"
 
-          git checkout -b "$branch"
-          git add Formula/paperless-ngx.rb
-          git commit -m "paperless-ngx ${version}"
-          git push -u origin "$branch"
+            # Check if PR already exists
+            existing=$(gh pr list --head "$branch" --json number --jq '.[0].number' 2>/dev/null || true)
+            if [ -n "$existing" ]; then
+              echo "PR #$existing already exists for ${name} ${latest}, skipping"
+              echo "::endgroup::"
+              continue
+            fi
 
-          gh pr create \
-            --title "paperless-ngx ${version}" \
-            --body "$(cat <<EOF
-          Automated version bump from ${{ steps.livecheck.outputs.current }} to ${version}.
+            # Bump version
+            brew bump-formula-pr \
+              --write-only \
+              --no-audit \
+              --version="$latest" \
+              "$formula"
+
+            # Update Python resources if the formula has any
+            if grep -q "pypi_packages\|resource \"" "Formula/${name}.rb"; then
+              brew update-python-resources \
+                --ignore-non-pypi-packages \
+                --version="$latest" \
+                "$formula" || true
+            fi
+
+            # Create PR if there are changes
+            if git diff --quiet "Formula/${name}.rb"; then
+              echo "No changes for ${name}, skipping"
+              echo "::endgroup::"
+              continue
+            fi
+
+            git checkout -b "$branch"
+            git add "Formula/${name}.rb"
+            git commit -m "${name} ${latest}"
+            git push -u origin "$branch"
+
+            body="${name} ${current} → ${latest} (automated)"
+            if [ "$name" = "paperless-ngx" ]; then
+              body=$(cat <<EOF
+          Automated version bump from ${current} to ${latest}.
 
           - Version and checksum updated via \`brew bump-formula-pr\`
           - Python resources updated via \`brew update-python-resources\`
@@ -95,4 +101,15 @@ jobs:
           > end of the file (added via \`send\`) is not managed by
           > \`update-python-resources\` and may need a manual update.
           EOF
-          )"
+              )
+            fi
+
+            gh pr create \
+              --title "${name} ${latest}" \
+              --body "$body"
+
+            # Return to main for the next formula
+            git checkout main
+
+            echo "::endgroup::"
+          done
