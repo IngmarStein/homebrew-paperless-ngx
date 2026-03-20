@@ -1,0 +1,111 @@
+name: Autobump
+
+on:
+  schedule:
+    # Every 6 hours
+    - cron: "0 */6 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  autobump:
+    runs-on: macos-latest
+    steps:
+      - name: Set up Homebrew
+        id: set-up-homebrew
+        uses: Homebrew/actions/setup-homebrew@master
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Set up git
+        uses: Homebrew/actions/git-user-config@master
+
+      - name: Check for new paperless-ngx release
+        id: livecheck
+        run: |
+          info=$(brew livecheck ingmarstein/paperless-ngx/paperless-ngx --json | jq -r '.[0]')
+          current=$(echo "$info" | jq -r '.version.current')
+          latest=$(echo "$info" | jq -r '.version.latest')
+          outdated=$(echo "$info" | jq -r '.version.outdated')
+          {
+            echo "current=$current"
+            echo "latest=$latest"
+            echo "outdated=$outdated"
+          } >> "$GITHUB_OUTPUT"
+          echo "paperless-ngx: $current → $latest (outdated: $outdated)"
+
+      - name: Bump formula version
+        if: steps.livecheck.outputs.outdated == 'true'
+        working-directory: ${{ steps.set-up-homebrew.outputs.repository-path }}
+        env:
+          HOMEBREW_GITHUB_API_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          version="${{ steps.livecheck.outputs.latest }}"
+          echo "Bumping paperless-ngx to $version"
+          brew bump-formula-pr \
+            --write-only \
+            --no-audit \
+            --version="$version" \
+            ingmarstein/paperless-ngx/paperless-ngx
+
+      - name: Update Python resources
+        if: steps.livecheck.outputs.outdated == 'true'
+        working-directory: ${{ steps.set-up-homebrew.outputs.repository-path }}
+        run: |
+          version="${{ steps.livecheck.outputs.latest }}"
+          brew update-python-resources \
+            --ignore-non-pypi-packages \
+            --version="$version" \
+            ingmarstein/paperless-ngx/paperless-ngx
+
+      - name: Check for scikit-learn update
+        if: steps.livecheck.outputs.outdated == 'true'
+        id: sklearn-check
+        working-directory: ${{ steps.set-up-homebrew.outputs.repository-path }}
+        run: |
+          # Check if scikit-learn resource version changed in the updated formula
+          # (update-python-resources may have updated it)
+          if git diff --quiet Formula/scikit-learn.rb 2>/dev/null; then
+            echo "sklearn_changed=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "sklearn_changed=true" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Create pull request
+        if: steps.livecheck.outputs.outdated == 'true'
+        working-directory: ${{ steps.set-up-homebrew.outputs.repository-path }}
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          version="${{ steps.livecheck.outputs.latest }}"
+          branch="autobump/paperless-ngx-${version}"
+
+          # Check if PR already exists
+          existing=$(gh pr list --head "$branch" --json number --jq '.[0].number' 2>/dev/null || true)
+          if [ -n "$existing" ]; then
+            echo "PR #$existing already exists for $version, skipping"
+            exit 0
+          fi
+
+          git checkout -b "$branch"
+          git add Formula/paperless-ngx.rb
+          git commit -m "paperless-ngx ${version}"
+          git push -u origin "$branch"
+
+          gh pr create \
+            --title "paperless-ngx ${version}" \
+            --body "$(cat <<EOF
+          Automated version bump from ${{ steps.livecheck.outputs.current }} to ${version}.
+
+          - Version and checksum updated via \`brew bump-formula-pr\`
+          - Python resources updated via \`brew update-python-resources\`
+
+          > [!NOTE]
+          > Review the Python resource changes. The \`psycopg-c\` resource at the
+          > end of the file (added via \`send\`) is not managed by
+          > \`update-python-resources\` and may need a manual update.
+          EOF
+          )"
