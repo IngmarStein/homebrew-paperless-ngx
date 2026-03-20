@@ -13,9 +13,11 @@ class ScikitLearn < Formula
     sha256 cellar: :any_skip_relocation, x86_64_linux: "ca7645ae82583c1d6544723cfbcbb391e8d85cf7b42519d4f16400972153dece"
   end
 
+  depends_on "cython" => :build
   depends_on "meson" => :build
   depends_on "ninja" => :build
   depends_on "pkgconf" => :build
+  depends_on "python-setuptools" => :build
   depends_on "libomp"
   depends_on "numpy"
   depends_on "python@3.14"
