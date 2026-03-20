@@ -21,6 +21,8 @@ class Granian < Formula
     depends_on "patchelf" => :build
   end
 
+  pypi_packages extra_packages: ["uvloop"]
+
   resource "click" do
     url "https://files.pythonhosted.org/packages/3d/fa/656b739db8587d7b5dfa22e22ed02566950fbfbcdc20311993483657a5c0/click-8.3.1.tar.gz"
     sha256 "12ff4785d337a1bb490bb7e9c2b1ee5da3112e94a8622f26a6c77f5d2fc6842a"

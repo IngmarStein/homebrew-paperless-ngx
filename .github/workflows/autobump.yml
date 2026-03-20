@@ -70,18 +70,9 @@ jobs:
 
             # Update Python resources if the formula has any
             if grep -q "pypi_packages\|resource \"" "Formula/${name}.rb"; then
-              # Exclude Homebrew Python formula deps to avoid duplicating them as resources
-              exclude_args=()
-              for dep in $(brew deps --direct "$formula" 2>/dev/null); do
-                case "$dep" in
-                  numpy|scipy|pillow|certifi|cffi|cryptography|pycparser|scikit-learn|granian)
-                    exclude_args+=(--exclude-packages "$dep") ;;
-                esac
-              done
               brew update-python-resources \
                 --ignore-non-pypi-packages \
                 --version="$latest" \
-                "${exclude_args[@]}" \
                 "$formula" || true
             fi
 

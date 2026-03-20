@@ -25,6 +25,8 @@ class ScikitLearn < Formula
     depends_on "patchelf" => :build
   end
 
+  pypi_packages exclude_packages: %w[numpy scipy]
+
   resource "joblib" do
     url "https://files.pythonhosted.org/packages/41/f2/d34e8b3a08a9cc79a50b2208a93dce981fe615b64d5a4d4abee421d898df/joblib-1.5.3.tar.gz"
     sha256 "8561a3269e6801106863fd0d6d84bb737be9e7631e33aaed3fb9ce5953688da3"
