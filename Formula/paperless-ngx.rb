@@ -669,7 +669,6 @@ class PaperlessNgx < Formula
     python_executable = venv.root/"bin/python"
     manage_py_script = venv.site_packages/"manage.py"
     celery_executable = venv.root/"bin/celery"
-    granian_executable = Formula["granian"].opt_bin/"granian"
 
     # download NLTK data
     system python_executable,
@@ -723,84 +722,59 @@ class PaperlessNgx < Formula
     s6_services_dir = libexec/"s6_services"
     s6_services_dir.mkpath
 
-    # paperless-webserver service
-    webserver_dir = s6_services_dir/"paperless-webserver"
-    webserver_dir.mkpath
-    (webserver_dir/"run").write <<~EOS
-      #!/bin/sh
-      set -a
-      . "#{etc}/paperless-ngx/paperless.conf"
-      set +a
-      export PAPERLESS_CONFIGURATION_PATH="#{etc}/paperless-ngx/paperless.conf"
-      echo "Running database migrations..."
-      "#{python_executable}" "#{manage_py_script}" migrate --no-input --skip-checks
-      exec "#{granian_executable}" \\
-        --interface asginl \\
-        --host "${PAPERLESS_INTERFACE:-127.0.0.1}" \\
-        --port "${PAPERLESS_PORT:-8000}" \\
-        --workers "${PAPERLESS_WEBSERVER_WORKERS:-2}" \\
-        --ws \\
-        --loop uvloop \\
-        "paperless.asgi:application"
-    EOS
-    (webserver_dir/"run").chmod 0755
+    conf_path = etc/"paperless-ngx/paperless.conf"
 
-    # paperless-consumer service
-    consumer_dir = s6_services_dir/"paperless-consumer"
-    consumer_dir.mkpath
-    (consumer_dir/"run").write <<~EOS
-      #!/bin/sh
-      set -a
-      . "#{etc}/paperless-ngx/paperless.conf"
-      set +a
-      export PAPERLESS_CONFIGURATION_PATH="#{etc}/paperless-ngx/paperless.conf"
+    # Each service gets a run script that sources the config, then execs its command.
+    # paperless-worker uses --pool threads to prevent a macOS fork crash:
+    #   https://bugs.python.org/issue37677
+    #   https://github.com/celery/celery/pull/9810
+    services = {
+      "paperless-webserver" => <<~EOS,
+        echo "Running database migrations..."
+        "#{python_executable}" "#{manage_py_script}" migrate --no-input --skip-checks
+        exec "#{python_executable}" -m granian \\
+          --interface asginl \\
+          --host "${PAPERLESS_INTERFACE:-127.0.0.1}" \\
+          --port "${PAPERLESS_PORT:-8000}" \\
+          --workers "${PAPERLESS_WEBSERVER_WORKERS:-2}" \\
+          --ws \\
+          --loop uvloop \\
+          "paperless.asgi:application"
+      EOS
+      "paperless-consumer"  => <<~EOS,
+        exec "#{python_executable}" "#{manage_py_script}" document_consumer
+      EOS
+      "paperless-worker"    => <<~EOS,
+        export TMPDIR="#{var}/paperless-ngx/tmp"
+        exec "#{celery_executable}" \\
+          --app paperless \\
+          worker \\
+          --loglevel INFO \\
+          --pool threads \\
+          --without-mingle \\
+          --without-gossip
+      EOS
+      "paperless-scheduler" => <<~EOS,
+        exec "#{celery_executable}" \\
+          --app paperless \\
+          beat \\
+          --loglevel INFO
+      EOS
+    }
 
-      exec "#{python_executable}" "#{manage_py_script}" document_consumer
-    EOS
-    (consumer_dir/"run").chmod 0755
-
-    # paperless-worker service
-    # use `--pool threads` to prevent a crash on macOS:
-    #   *** multi-threaded process forked ***
-    #   crashed on child side of fork pre-exec
-    # See also:
-    #  - https://bugs.python.org/issue37677
-    #  - https://github.com/celery/celery/pull/9810
-    worker_dir = s6_services_dir/"paperless-worker"
-    worker_dir.mkpath
-    (worker_dir/"run").write <<~EOS
-      #!/bin/sh
-      set -a
-      . "#{etc}/paperless-ngx/paperless.conf"
-      set +a
-      export PAPERLESS_CONFIGURATION_PATH="#{etc}/paperless-ngx/paperless.conf"
-      export TMPDIR="#{var}/paperless-ngx/tmp"
-
-      exec "#{celery_executable}" \\
-        --app paperless \\
-        worker \\
-        --loglevel INFO \\
-        --pool threads \\
-        --without-mingle \\
-        --without-gossip
-    EOS
-    (worker_dir/"run").chmod 0755
-
-    # paperless-scheduler service
-    scheduler_dir = s6_services_dir/"paperless-scheduler"
-    scheduler_dir.mkpath
-    (scheduler_dir/"run").write <<~EOS
-      #!/bin/sh
-      set -a
-      . "#{etc}/paperless-ngx/paperless.conf"
-      set +a
-      export PAPERLESS_CONFIGURATION_PATH="#{etc}/paperless-ngx/paperless.conf"
-      exec "#{celery_executable}" \\
-        --app paperless \\
-        beat \\
-        --loglevel INFO
-    EOS
-    (scheduler_dir/"run").chmod 0755
+    services.each do |name, body|
+      service_dir = s6_services_dir/name
+      service_dir.mkpath
+      (service_dir/"run").write <<~EOS
+        #!/bin/sh
+        set -a
+        . "#{conf_path}"
+        set +a
+        export PAPERLESS_CONFIGURATION_PATH="#{conf_path}"
+        #{body}
+      EOS
+      (service_dir/"run").chmod 0755
+    end
 
     # manage.py wrapper
     (buildpath/"paperless-manage").write <<~SH
@@ -865,7 +839,7 @@ class PaperlessNgx < Formula
     begin
       output_log = testpath/"output.log"
       pid = spawn(
-        Formula["granian"].opt_bin/"granian",
+        opt_libexec/"bin/python", "-m", "granian",
         "--interface", "asginl",
         "--ws", "paperless.asgi:application",
         [:out, :err] => output_log.to_s
