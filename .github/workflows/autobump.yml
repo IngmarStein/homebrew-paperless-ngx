@@ -41,7 +41,7 @@ jobs:
         working-directory: ${{ steps.set-up-homebrew.outputs.repository-path }}
         env:
           HOMEBREW_GITHUB_API_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_TOKEN: ${{ secrets.PAT_TOKEN }}
         run: |
           jq -c '.[]' /tmp/outdated.json | while IFS= read -r entry; do
             formula=$(echo "$entry" | jq -r '.formula')
@@ -86,7 +86,8 @@ jobs:
             git checkout -b "$branch"
             git add "Formula/${name}.rb"
             git commit -m "${name} ${latest}"
-            git push -u origin "$branch"
+            git -c http.extraheader="Authorization: basic $(echo -n "x-access-token:${GH_TOKEN}" | base64)" \
+              push -u origin "$branch"
 
             body="${name} ${current} → ${latest} (automated)"
             if [ "$name" = "paperless-ngx" ]; then
