@@ -7,6 +7,12 @@ class ScikitLearn < Formula
   sha256 "20e9e49ecd130598f1ca38a1d85090e1a600147b9c02fa6f15d69cb53d968fda"
   license "BSD-3-Clause"
 
+  bottle do
+    root_url "https://ghcr.io/v2/ingmarstein/paperless-ngx"
+    sha256 cellar: :any,                 arm64_tahoe:  "c0c7074bf23a857f66b19fa6e646b796e24bda8b1e8b7258d22a9f937b3c3bfd"
+    sha256 cellar: :any_skip_relocation, x86_64_linux: "ca7645ae82583c1d6544723cfbcbb391e8d85cf7b42519d4f16400972153dece"
+  end
+
   depends_on "meson" => :build
   depends_on "ninja" => :build
   depends_on "pkgconf" => :build
