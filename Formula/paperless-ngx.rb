@@ -14,12 +14,10 @@ class PaperlessNgx < Formula
     sha256 cellar: :any_skip_relocation, x86_64_linux: "c63a6e0d0c496a051baf7bcb023ca83fd937595d3b69728c8725c72cb71b848e"
   end
 
-  depends_on "autoconf" => :build
   depends_on "cmake" => :build
   depends_on "cython" => :build
   depends_on "maturin" => :build
   depends_on "meson" => :build
-  depends_on "mypy" => :build
   depends_on "patchelf" => :build
   depends_on "pkgconf" => :build
   depends_on "python-setuptools" => :build
