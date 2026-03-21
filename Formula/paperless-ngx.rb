@@ -866,7 +866,7 @@ class PaperlessNgx < Formula
   end
 
   send(:resource, "psycopg-c") do
-    url "https://files.pythonhosted.org/packages/48/f5/13c6bf88f6ccadc2930066cc5369cee431fc2c87a1ddb621fc27cfe7d8f3/psycopg_c-3.3.2.tar.gz"
-    sha256 "a65927731d394cc77bbf85d02d0311d7843616a4a627f3e816e94ad3a052ef83"
+    url "https://files.pythonhosted.org/packages/cb/a0/8feb0ca8c7c20a8b9ac4d46b335ddd57e48e593b714262f006880f34fee5/psycopg_c-3.3.3.tar.gz"
+    sha256 "86ef6f4424348247828e83fb0882c9f8acb33e64d0a5ce66c1b4a5107ee73edd"
   end
 end
