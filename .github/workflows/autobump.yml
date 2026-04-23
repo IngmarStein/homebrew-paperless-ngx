@@ -69,6 +69,9 @@ jobs:
               "$formula"
 
             # Update Python resources if the formula has any
+            # Note: granian's update-python-resources may fail for 24h after version bump due to
+            # the --uploaded-prior-to filter protecting against new PyPI releases. It will succeed
+            # on subsequent scheduled runs automatically.
             if grep -q "pypi_packages\|resource \"" "Formula/${name}.rb"; then
               brew update-python-resources \
                 --ignore-non-pypi-packages \
