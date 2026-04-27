@@ -7,6 +7,11 @@ class PaperlessNgx < Formula
   sha256 "e5fca683a32b4354adf46c68097fa9ce8189981789a8a1c16e8776c0e97c54a8"
   license "GPL-3.0-or-later"
 
+  livecheck do
+    url "https://github.com/paperless-ngx/paperless-ngx/releases/latest"
+    strategy :github_releases
+  end
+
   bottle do
     root_url "https://ghcr.io/v2/ingmarstein/paperless-ngx"
     sha256 cellar: :any,                 arm64_tahoe:  "8095ade75ee2112fb734a3661b69bd1c1c6fc24d863dd6b91c44a46448747e08"
