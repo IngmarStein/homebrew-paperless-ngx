@@ -3,8 +3,8 @@ class ScikitLearn < Formula
 
   desc "Python module for machine learning"
   homepage "https://scikit-learn.org"
-  url "https://files.pythonhosted.org/packages/0e/d4/40988bf3b8e34feec1d0e6a051446b1f66225f8529b9309becaeef62b6c4/scikit_learn-1.8.0.tar.gz"
-  sha256 "9bccbb3b40e3de10351f8f5068e105d0f4083b1a65fa07b6634fbc401a6287fd"
+  url "https://files.pythonhosted.org/packages/fa/6f/37092bdb25f712817231799fc5674d8e704066a8a70c1d2d40517e18b4ab/scikit_learn-1.9.0.tar.gz"
+  sha256 "8833266989d3a5110178a9fae30783675460724d0e1efb13b14901d2c660c557"
   license "BSD-3-Clause"
 
   bottle do
@@ -18,6 +18,7 @@ class ScikitLearn < Formula
   depends_on "ninja" => :build
   depends_on "pkgconf" => :build
   depends_on "python-setuptools" => :build
+  depends_on "rust" => :build
   depends_on "libomp"
   depends_on "numpy"
   depends_on "python@3.14"
@@ -32,6 +33,11 @@ class ScikitLearn < Formula
   resource "joblib" do
     url "https://files.pythonhosted.org/packages/41/f2/d34e8b3a08a9cc79a50b2208a93dce981fe615b64d5a4d4abee421d898df/joblib-1.5.3.tar.gz"
     sha256 "8561a3269e6801106863fd0d6d84bb737be9e7631e33aaed3fb9ce5953688da3"
+  end
+
+  resource "narwhals" do
+    url "https://files.pythonhosted.org/packages/9c/1c/c80cb7719721a44846c6301ef118434bae30a423924bfad3a47f16bdc064/narwhals-2.22.0.tar.gz"
+    sha256 "6486282bb7e4b4ab55963efbd8be1451b764cc4874b74d1fd625eba9dc60b86f"
   end
 
   resource "threadpoolctl" do
