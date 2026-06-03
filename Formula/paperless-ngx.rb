@@ -790,14 +790,14 @@ class PaperlessNgx < Formula
     (bin/"paperless-manage").chmod 0755
   end
 
-  def post_install
-    mkdir_p (var/"paperless-ngx/.gnupg")
-    mkdir_p (var/"paperless-ngx/consume")
-    mkdir_p (var/"paperless-ngx/data")
-    mkdir_p (var/"paperless-ngx/export")
-    mkdir_p (var/"paperless-ngx/media")
-    mkdir_p (var/"paperless-ngx/nltk_data")
-    mkdir_p (var/"paperless-ngx/tmp")
+  post_install_steps do
+    mkdir_p "paperless-ngx/.gnupg"
+    mkdir_p "paperless-ngx/consume"
+    mkdir_p "paperless-ngx/data"
+    mkdir_p "paperless-ngx/export"
+    mkdir_p "paperless-ngx/media"
+    mkdir_p "paperless-ngx/nltk_data"
+    mkdir_p "paperless-ngx/tmp"
   end
 
   service do
