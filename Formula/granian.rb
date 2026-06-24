@@ -7,12 +7,6 @@ class Granian < Formula
   sha256 "2b203bc0c7de55dfd0387a52e8c11304ef1dad0e2d5e3ef3aad32c42260a041f"
   license "BSD-3-Clause"
 
-  bottle do
-    root_url "https://ghcr.io/v2/ingmarstein/paperless-ngx"
-    sha256 cellar: :any, arm64_tahoe:  "b7286508e97712ea182e3560f69e9c33f891f797d02879ab69b55da469478a3c"
-    sha256 cellar: :any, x86_64_linux: "8b1dfb52e9e4861366a35a72a63a1b9523aef547de7f9cf2a4aa4621caeb5fc4"
-  end
-
   depends_on "maturin" => :build
   depends_on "rust" => :build
   depends_on "python@3.14"
