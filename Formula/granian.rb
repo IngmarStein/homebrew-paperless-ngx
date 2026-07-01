@@ -3,8 +3,8 @@ class Granian < Formula
 
   desc "Rust HTTP server for Python ASGI/RSGI/WSGI applications"
   homepage "https://github.com/emmett-framework/granian"
-  url "https://files.pythonhosted.org/packages/0e/37/b47e83868f8cda609d48da01adba8af7a86559ae0a95d460cfe2a4eef70b/granian-2.7.7.tar.gz"
-  sha256 "2b203bc0c7de55dfd0387a52e8c11304ef1dad0e2d5e3ef3aad32c42260a041f"
+  url "https://files.pythonhosted.org/packages/98/d5/70694e4d7ed4e065a1b3a53695a02fe575bad5cca91c4a0107dfb02711ed/granian-2.7.8.tar.gz"
+  sha256 "e384b1f08ed3deebdee3516c6db583a26aa20d5e893ce8e8867301fda3902c10"
   license "BSD-3-Clause"
 
   bottle do
@@ -25,8 +25,8 @@ class Granian < Formula
   pypi_packages extra_packages: ["uvloop"]
 
   resource "click" do
-    url "https://files.pythonhosted.org/packages/9b/98/518d8e5081007684232226f475082b30087d0f585e8457db087298259f49/click-8.4.1.tar.gz"
-    sha256 "918b5633eddf6b41c32d4f454bf0de810065c74e3f7dbf8ee5452f8be88d3e96"
+    url "https://files.pythonhosted.org/packages/76/d4/81420972a676e8ffea40450d8c8c92943e7218a78fe9b64359836cc9876b/click-8.4.2.tar.gz"
+    sha256 "9a6cea6e60b17ebe0a44c5cc636d94f09bd66142c1cd7d8b4cd731c4917a15f6"
   end
 
   resource "uvloop" do
