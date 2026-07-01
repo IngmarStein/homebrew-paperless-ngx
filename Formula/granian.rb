@@ -9,9 +9,8 @@ class Granian < Formula
 
   bottle do
     root_url "https://ghcr.io/v2/ingmarstein/paperless-ngx"
-    rebuild 1
-    sha256 cellar: :any, arm64_tahoe:  "a5d6c8ae64104bfbc71de2a9d984a317bdfa3e7c2f330e358e8ce27369dafd8d"
-    sha256 cellar: :any, x86_64_linux: "0529c87ca2b1502c785742431dfae40383fa8a15fedcff25743c6024cd283a9e"
+    sha256 cellar: :any, arm64_tahoe:  "ce101299fb43e49e341341f95cf284dcbf737779ba3e5e4eb54a1d800ebf1368"
+    sha256 cellar: :any, x86_64_linux: "5a403671ecca2e075c901ddd540204b8b189da69354c65585b39be1cf64106fc"
   end
 
   depends_on "maturin" => :build
