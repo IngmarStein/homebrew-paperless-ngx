@@ -14,8 +14,8 @@ class PaperlessNgx < Formula
 
   bottle do
     root_url "https://ghcr.io/v2/ingmarstein/paperless-ngx"
-    sha256 cellar: :any, arm64_tahoe:  "07eec5fb8c6575b239554288b102e99bb5e7f4935cebbf863f85685e3551e275"
-    sha256 cellar: :any, x86_64_linux: "b7dd6a51ecc910ac0e64ca4f6a9400b247edf8e5ca07015070be7febdb8053d3"
+    sha256 cellar: :any, arm64_tahoe:  "cd2b690f0414e18f64e905be6dc4493e6d650b31ce1fe9bbda5b4c3106d29878"
+    sha256 cellar: :any, x86_64_linux: "32475d6cb1e183dfbb68f01fdfbedc8a4846a214e0b0228582d1c77d1822d35b"
   end
 
   depends_on "cmake" => :build
