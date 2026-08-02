@@ -3,8 +3,8 @@ class PaperlessNgx < Formula
 
   desc "Scan, index and archive all your physical documents"
   homepage "https://docs.paperless-ngx.com/"
-  url "https://github.com/paperless-ngx/paperless-ngx/releases/download/v3.0.4/paperless-ngx-v3.0.4.tar.xz"
-  sha256 "0eeaf0205bf8abd08e813524b0f261161ed3958dc6f4f0304dcd0d36a96e5045"
+  url "https://github.com/paperless-ngx/paperless-ngx/releases/download/v3.0.5/paperless-ngx-v3.0.5.tar.xz"
+  sha256 "d45500dfb4624e72913ecb12fe7d71c2d4d17abeb2406b65054bff728eda5bd1"
   license "GPL-3.0-or-later"
 
   livecheck do
