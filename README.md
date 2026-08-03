@@ -19,6 +19,13 @@ brew "<formula>"
 
 ## Install and run paperless-ngx
 
+Prerequisites:
+
+```shell
+brew install redis
+brew services start redis
+```
+
 Install paperless-ngx:
 
 ```shell
