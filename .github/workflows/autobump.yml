@@ -72,10 +72,15 @@ jobs:
             # No --version needed: bump-formula-pr --write-only already
             # updated the formula to $latest in-place above.
             if grep -q "pypi_packages\|resource \"" "Formula/${name}.rb"; then
-              brew update-python-resources \
-                --ignore-non-pypi-packages \
-                --ignore-main-package-cooldown \
-                "$formula" || true
+              if ! brew update-python-resources \
+                     --ignore-non-pypi-packages \
+                     --ignore-main-package-cooldown \
+                     "$formula"; then
+                git checkout -- "Formula/${name}.rb"
+                echo "::warning::Skipping ${name}: update-python-resources failed, will retry next run"
+                echo "::endgroup::"
+                continue
+              fi
             fi
 
             # Create PR if there are changes
