@@ -3,8 +3,8 @@ class Granian < Formula
 
   desc "Rust HTTP server for Python ASGI/RSGI/WSGI applications"
   homepage "https://github.com/emmett-framework/granian"
-  url "https://files.pythonhosted.org/packages/58/22/f289f681277c8a1cd2c29177fc21bad080b270d6b60ac6e91a19cafe795a/granian-2.8.0.tar.gz"
-  sha256 "be842c6737b41beb6fe6521f9c46695a1843ec9e086a18bbbc945ed170ff28e2"
+  url "https://files.pythonhosted.org/packages/b0/cc/9c752e6173df02c5e37c0df7bffd50c1341109e4b4f8e5073bfd3a72dc82/granian-2.7.9.tar.gz"
+  sha256 "096d9a3396b13826bc63d2cf424ed04daf1ea077beed361d48dca2d55cb4b527"
   license "BSD-3-Clause"
 
   bottle do
