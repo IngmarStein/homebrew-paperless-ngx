@@ -1113,13 +1113,13 @@ class PaperlessNgx < Formula
   end
 
   post_install_steps do
-    mkdir_p "paperless-ngx/.gnupg"
-    mkdir_p "paperless-ngx/consume"
-    mkdir_p "paperless-ngx/data"
-    mkdir_p "paperless-ngx/export"
-    mkdir_p "paperless-ngx/media"
-    mkdir_p "paperless-ngx/nltk_data"
-    mkdir_p "paperless-ngx/tmp"
+    mkdir_p "paperless-ngx/.gnupg", base: :var
+    mkdir_p "paperless-ngx/consume", base: :var
+    mkdir_p "paperless-ngx/data", base: :var
+    mkdir_p "paperless-ngx/export", base: :var
+    mkdir_p "paperless-ngx/media", base: :var
+    mkdir_p "paperless-ngx/nltk_data", base: :var
+    mkdir_p "paperless-ngx/tmp", base: :var
   end
 
   service do
