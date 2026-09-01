@@ -3,8 +3,8 @@ class PaperlessNgx < Formula
 
   desc "Scan, index and archive all your physical documents"
   homepage "https://docs.paperless-ngx.com/"
-  url "https://github.com/paperless-ngx/paperless-ngx/releases/download/v3.1.1/paperless-ngx-v3.1.1.tar.xz"
-  sha256 "0f04ef84bbdc6914fa9863547f13e0a3ad13a26940c443b4c3fadbc3b581e102"
+  url "https://github.com/paperless-ngx/paperless-ngx/releases/download/v3.1.2/paperless-ngx-v3.1.2.tar.xz"
+  sha256 "15a22c07dd9c8fd3d20c8eb7da2823df6e57c654d7d4de92e54988f9514230f2"
   license "GPL-3.0-or-later"
 
   livecheck do
@@ -340,8 +340,8 @@ class PaperlessNgx < Formula
   end
 
   resource "fonttools" do
-    url "https://files.pythonhosted.org/packages/84/69/c97f2c18e0db87d2c7b15da1974dace76ae938f1cfa22e2727a648b7ed43/fonttools-4.63.0.tar.gz"
-    sha256 "caeb583deeb5168e694b65cda8b4ee62abedfa66cf88488734466f2366b9c4e0"
+    url "https://files.pythonhosted.org/packages/d4/41/0f072a712dc74496e03710e462a18a4cfd8a258ad055a4e22d28b43a7abd/fonttools-4.64.0.tar.gz"
+    sha256 "ecb2e59a7bc692fee64dda6010deb66222335693b30046f15cccf81233aa715f"
   end
 
   resource "fpdf2" do
@@ -510,13 +510,13 @@ class PaperlessNgx < Formula
   end
 
   resource "llama-index-embeddings-huggingface" do
-    url "https://files.pythonhosted.org/packages/a1/b3/faa44f7c9edaaefb6f7e1d8a306433c4ccc5ea5bde92302bec149e62b838/llama_index_embeddings_huggingface-0.7.0.tar.gz"
-    sha256 "da8a2a65df9404112c4430dfada09d4f846ba165197a25dbe77f734014c56a87"
+    url "https://files.pythonhosted.org/packages/53/ab/a027dbe85998649526b06439fe9ce0591928a1f9593de3f59ea835a06f2e/llama_index_embeddings_huggingface-0.8.0.tar.gz"
+    sha256 "02f34df13e3b83e9169fcfdf624b6fbe906fce75b7448cdf69800babc281a9a6"
   end
 
   resource "llama-index-embeddings-ollama" do
-    url "https://files.pythonhosted.org/packages/8b/cd/2cff1feac66368a4c60ea7afbdbb3f3fdd49ee8c279fc105457e726a3ad2/llama_index_embeddings_ollama-0.9.0.tar.gz"
-    sha256 "19d2d2a0e3f0934480eae31243ac5f1ce171319578b9c0adad25cf1b6c35659e"
+    url "https://files.pythonhosted.org/packages/37/be/aa06215b51538a9e95da63bb3855591a547eae16c15f45f3905f98e03dbe/llama_index_embeddings_ollama-0.10.0.tar.gz"
+    sha256 "fc26cfe8d9d015f76b61558d4c9a1c854535ea0140dd87f169de760b40af3cea"
   end
 
   resource "llama-index-embeddings-openai" do
@@ -525,8 +525,8 @@ class PaperlessNgx < Formula
   end
 
   resource "llama-index-embeddings-openai-like" do
-    url "https://files.pythonhosted.org/packages/b2/df/79e4748196213b55931d5f8377141fff41135f5988d5501860824cc95390/llama_index_embeddings_openai_like-0.3.1.tar.gz"
-    sha256 "cef7af4bce284e8e6730532dbd0aa325e77398a5d5524edb2d2e3acb122fb5b6"
+    url "https://files.pythonhosted.org/packages/ca/09/671814fa7f52a462702e526689afc07a36e7d7242830ddf910faba480ded/llama_index_embeddings_openai_like-0.4.0.tar.gz"
+    sha256 "ec151f73eacf17476eda96481eb95815de0ec7c559eb7fe745d3589cfa3846f2"
   end
 
   resource "llama-index-instrumentation" do
@@ -535,8 +535,8 @@ class PaperlessNgx < Formula
   end
 
   resource "llama-index-llms-ollama" do
-    url "https://files.pythonhosted.org/packages/17/8c/dcda55d685d1094bcffa3f4f2b30bb45ade5aa93694617272bf6c81d5822/llama_index_llms_ollama-0.10.1.tar.gz"
-    sha256 "470ed836dee43bc0171dc05c68c2daa3618a7c38166b8044d7f8360cd8cd8fa6"
+    url "https://files.pythonhosted.org/packages/11/99/b82667831e75aca2f49488b2904520180c19cba3c24fc55ee4b177d77888/llama_index_llms_ollama-0.11.0.tar.gz"
+    sha256 "e6b8cac200a9ff67caea531fece0a6272a89e3506b2b9648ec709acffe4a7980"
   end
 
   resource "llama-index-llms-openai" do
@@ -545,8 +545,8 @@ class PaperlessNgx < Formula
   end
 
   resource "llama-index-llms-openai-like" do
-    url "https://files.pythonhosted.org/packages/3b/a3/16410b28d131aa113ada79f856b78cb68a8e92a1e27255ea9c36c27a5dec/llama_index_llms_openai_like-0.7.2.tar.gz"
-    sha256 "ed9ff73f975dce470f98ac61c982151ba78eedfa3fb9b03894bc1d1312b213ff"
+    url "https://files.pythonhosted.org/packages/0b/83/9695e5414b458e82b8baafdfec8f94dc1566cac712a171bcab4a03ca3a30/llama_index_llms_openai_like-0.8.0.tar.gz"
+    sha256 "459f115ca343c96252b9d123986056193a7d088f64f73c5336ce381e02c9d6d2"
   end
 
   resource "llama-index-workflows" do
@@ -775,8 +775,8 @@ class PaperlessNgx < Formula
   end
 
   resource "rapidfuzz" do
-    url "https://files.pythonhosted.org/packages/2c/21/ef6157213316e85790041254259907eb722e00b03480256c0545d98acd33/rapidfuzz-3.14.5.tar.gz"
-    sha256 "ba10ac57884ce82112f7ed910b67e7fb6072d8ef2c06e30dc63c0f604a112e0e"
+    url "https://files.pythonhosted.org/packages/18/97/226c43b7b5d957bc3840ed52ea99eed261f99834c4619be7a4742cbaeafa/rapidfuzz-3.14.6.tar.gz"
+    sha256 "e13a8160d017b499ec7a2fa9d0ce1ae2e7377080815785819f966fb235d4eb60"
   end
 
   resource "redis" do
@@ -790,8 +790,8 @@ class PaperlessNgx < Formula
   end
 
   resource "regex" do
-    url "https://files.pythonhosted.org/packages/20/98/04b13f1ddfb63158025291c02e03eb42fbb7acb51d091d541050eb4e35e8/regex-2026.7.19.tar.gz"
-    sha256 "7e77b324909c1617cbb4c668677e2c6ae13f44d7c1de0d4f15f2e3c10f3315b5"
+    url "https://files.pythonhosted.org/packages/61/d8/9c23ec31d4973d7b41a99f45c7aa9aa65c7c4313d5c0463aafdb8fe05dd7/regex-2026.8.31.tar.gz"
+    sha256 "9350fd448a6442ae27853ab9d4b8d5a0bcb6d7774923a4fdfddd104c4458b35f"
   end
 
   resource "requests" do
@@ -815,8 +815,8 @@ class PaperlessNgx < Formula
   end
 
   resource "sentence-transformers" do
-    url "https://files.pythonhosted.org/packages/e7/43/6b53e6a2098440ce21478742facbc058f1a66ba2cb80b24bdc64942e1e2c/sentence_transformers-6.0.0.tar.gz"
-    sha256 "9e8c2c24f3b1c7473cd5f519a3d3cff60daaeb95533b82d045ffb43ee5f2dac4"
+    url "https://files.pythonhosted.org/packages/d9/ef/87681678d0aa91a1e77f0ffdd2e5d900aaf358aac644dd14bead8d95ec4c/sentence_transformers-6.0.1.tar.gz"
+    sha256 "1c3b8d9403f87ad0c879638554f36cc85744f38a6a70d150fd7e964ca0e9935b"
   end
 
   resource "setproctitle" do
@@ -875,8 +875,8 @@ class PaperlessNgx < Formula
   end
 
   resource "tinytag" do
-    url "https://files.pythonhosted.org/packages/9f/a4/a1d39cc10b43cbbae268127a1c38d689bc6a85cf966f9445bc9f1f5f517a/tinytag-2.3.0.tar.gz"
-    sha256 "84850f8045424b944475b9754bc35c7e09bcae1ab08d1f88d9293aa33af39a27"
+    url "https://files.pythonhosted.org/packages/77/1d/ba5d28e50e582e3f0661ec9be182a7532595aea0cd8b61f629c69cce69bf/tinytag-2.3.1.tar.gz"
+    sha256 "537869e67de2dbc8b84d96b5ffcccac6ed1bc9f4500ee623f36b198d3ac3b23c"
   end
 
   resource "tokenizers" do
