@@ -3,8 +3,8 @@ class PaperlessNgx < Formula
 
   desc "Scan, index and archive all your physical documents"
   homepage "https://docs.paperless-ngx.com/"
-  url "https://github.com/paperless-ngx/paperless-ngx/releases/download/v3.1.2/paperless-ngx-v3.1.2.tar.xz"
-  sha256 "15a22c07dd9c8fd3d20c8eb7da2823df6e57c654d7d4de92e54988f9514230f2"
+  url "https://github.com/paperless-ngx/paperless-ngx/releases/download/v3.1.3/paperless-ngx-v3.1.3.tar.xz"
+  sha256 "bc334757b151543259d556edfb39da579b17381e10ef5031c0de66f91f72dbb9"
   license "GPL-3.0-or-later"
 
   livecheck do
@@ -105,8 +105,8 @@ class PaperlessNgx < Formula
   end
 
   resource "anyio" do
-    url "https://files.pythonhosted.org/packages/61/cc/a381afa6efea9f496eff839d4a6a1aed3bfafc7b3ab4b0d1b243a12573dd/anyio-4.14.2.tar.gz"
-    sha256 "cfa139f3ed1a23ee8f88a145ddb5ac7605b8bbfd8592baacd7ce3d8bb4313c7f"
+    url "https://files.pythonhosted.org/packages/ea/9a/c15a60547004a3f3cea20296c934f827ddd7bdba225a2e7e9fcb5ec48c80/anyio-4.15.0.tar.gz"
+    sha256 "b5c620ed540725e2579c31b17bb995b3bf02c9281c9cace04c7d186380bab85e"
   end
 
   resource "asgiref" do
@@ -325,8 +325,8 @@ class PaperlessNgx < Formula
   end
 
   resource "filelock" do
-    url "https://files.pythonhosted.org/packages/6d/30/03b03951873a1a0ffc7e8ca0e10c15597b59e8d0e39260704cd2ea087bc4/filelock-3.32.4.tar.gz"
-    sha256 "2bde2e4cf732e0153406d8a7bc80620ecf5e621fe0d25e41143c4e3b4733ff30"
+    url "https://files.pythonhosted.org/packages/0a/a0/50c2c0ce5e74d7721bbb1b19a26ebd339aac5878553a6e35308c2f31f935/filelock-3.32.5.tar.gz"
+    sha256 "f6a6a28f743f9b95ce19db5abe0f376f75eb56517dff21e1a4751e2657d3e83d"
   end
 
   resource "filetype" do
@@ -555,8 +555,8 @@ class PaperlessNgx < Formula
   end
 
   resource "lxml" do
-    url "https://files.pythonhosted.org/packages/ad/a9/970b8fa0ecc4fbf1dfaed0d89bbc1fc1421b25ec26a2038c91e872dc6c8e/lxml-6.1.2.tar.gz"
-    sha256 "1055241852f2b02068af4a625a5d32c087db193c12251928af2562ecd2239f18"
+    url "https://files.pythonhosted.org/packages/23/ad/28ecd7cb894d172f3c9c80a075eeeb2017ac62e3632cee05a5f9493547eb/lxml-6.1.3.tar.gz"
+    sha256 "45222d94ddd511536f3b2f7d9deae3b2339b4ce0f075f1ca25703b07cad9dd21"
   end
 
   resource "markdown-it-py" do
@@ -670,8 +670,8 @@ class PaperlessNgx < Formula
   end
 
   resource "platformdirs" do
-    url "https://files.pythonhosted.org/packages/ea/06/cf1564dcc2e2261c8c8c6c05628dc8b418943bdae2a4e58640ceb2f770fa/platformdirs-4.11.5.tar.gz"
-    sha256 "e8b31f4f8bcbbedef91a6b57a706255e4f148d2a4e01648382a0a47342539173"
+    url "https://files.pythonhosted.org/packages/69/b7/802a56eca9f2fac455b8bab5375a2647b0f0e14a2cd63ef077de3c4a7658/platformdirs-4.11.7.tar.gz"
+    sha256 "4f41487eeeeeb07f3a6625e61d9bc0ae6809f92d3386dbd74392fbb76108104d"
   end
 
   resource "pluggy" do
@@ -700,8 +700,8 @@ class PaperlessNgx < Formula
   end
 
   resource "psycopg" do
-    url "https://files.pythonhosted.org/packages/db/2f/cb91e5502ec9de1de6f1b76cfbf69531932725361168bb06963620c77e2e/psycopg-3.3.4.tar.gz"
-    sha256 "e21207764952cff81b6b8bdacad9a3939f2793367fdac2987b3aac36a651b5bc"
+    url "https://files.pythonhosted.org/packages/72/73/8fb739d0f6bba247b9b93c9840c402a4f88545be5f1d4b02b23366371c00/psycopg-3.3.5.tar.gz"
+    sha256 "d0a3d9ccf5788af054cbd745278cb02401b5c312aeaafbf2c6144460aec47da4"
   end
 
   resource "psycopg-pool" do
@@ -790,8 +790,8 @@ class PaperlessNgx < Formula
   end
 
   resource "regex" do
-    url "https://files.pythonhosted.org/packages/61/d8/9c23ec31d4973d7b41a99f45c7aa9aa65c7c4313d5c0463aafdb8fe05dd7/regex-2026.8.31.tar.gz"
-    sha256 "9350fd448a6442ae27853ab9d4b8d5a0bcb6d7774923a4fdfddd104c4458b35f"
+    url "https://files.pythonhosted.org/packages/19/c1/6b30b775c7bcc6cf6506a4d4741c2123e8d99cd50f3fe8cbd731f5fef526/regex-2026.9.3.tar.gz"
+    sha256 "aabd43208e335f4c3f0b56de3464b066dd425983a58f6eeb5738bcd7465403db"
   end
 
   resource "requests" do
@@ -925,8 +925,8 @@ class PaperlessNgx < Formula
   end
 
   resource "uharfbuzz" do
-    url "https://files.pythonhosted.org/packages/58/85/c7545959fdf6b9377b926c826f6d80bddf034ac361b09306d430a0f556a5/uharfbuzz-0.56.0.tar.gz"
-    sha256 "77f4ad1c9f32f44cc6f0c0c4f98fab54587719c96c810a043d01669f704d3e0c"
+    url "https://files.pythonhosted.org/packages/60/77/48457fb0c51f6f8c1e3082b126322e075d60fea60ee0df2b18cc050d9874/uharfbuzz-0.56.1.tar.gz"
+    sha256 "a0a6928ed66b166a931ebe5df9ac551b9c42983513030233dcd95b41fa827f97"
   end
 
   resource "uritemplate" do
