@@ -6,6 +6,7 @@ class PaperlessNgx < Formula
   url "https://github.com/paperless-ngx/paperless-ngx/releases/download/v3.1.3/paperless-ngx-v3.1.3.tar.xz"
   sha256 "bc334757b151543259d556edfb39da579b17381e10ef5031c0de66f91f72dbb9"
   license "GPL-3.0-or-later"
+  revision 1
 
   livecheck do
     url "https://github.com/paperless-ngx/paperless-ngx/releases/latest"
@@ -1009,6 +1010,14 @@ class PaperlessNgx < Formula
 
     # templates
     (venv.site_packages/"templates").install Dir["src/documents/templates/*"]
+
+    # prompt templates for paperless_ai (setuptools only packages *.py,
+    # so the .j2 files are missing and /ai_suggestions/ fails with
+    # TemplateNotFound)
+    (venv.site_packages/"paperless_ai/prompts").install Dir["src/paperless_ai/prompts/*.j2"]
+
+    # compiled backend translations (LOCALE_PATHS = site-packages/locale)
+    (venv.site_packages/"locale").install Dir["src/locale/*/LC_MESSAGES/*.mo"]
     inreplace venv.site_packages/"paperless/settings/__init__.py" do |s|
       s.sub! '"DIRS": []', '"DIRS": [os.path.join(BASE_DIR, \'templates\')]'
       # Apply thread-safety shim for macOS/spawn to fix _strptime and optparse race conditions
