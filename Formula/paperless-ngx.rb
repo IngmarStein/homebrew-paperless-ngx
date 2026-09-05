@@ -1018,6 +1018,7 @@ class PaperlessNgx < Formula
 
     # compiled backend translations (LOCALE_PATHS = site-packages/locale)
     (venv.site_packages/"locale").install Dir["src/locale/*/LC_MESSAGES/*.mo"]
+
     inreplace venv.site_packages/"paperless/settings/__init__.py" do |s|
       s.sub! '"DIRS": []', '"DIRS": [os.path.join(BASE_DIR, \'templates\')]'
       # Apply thread-safety shim for macOS/spawn to fix _strptime and optparse race conditions
