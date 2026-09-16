@@ -59,8 +59,8 @@ class ScikitLearn < Formula
     system python3, "-m", "pip", "install", *std_pip_args(build_isolation: true), "."
   end
 
-  def post_install
-    HOMEBREW_PREFIX.glob("lib/python*.*/site-packages/sklearn/**/*.pyc").map(&:unlink)
+  post_install_steps do
+    remove "{{HOMEBREW_PREFIX}}/lib/python*.*/site-packages/sklearn/**/*.pyc"
   end
 
   test do
