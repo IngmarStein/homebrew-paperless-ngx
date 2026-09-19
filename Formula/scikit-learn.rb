@@ -9,8 +9,8 @@ class ScikitLearn < Formula
 
   bottle do
     root_url "https://ghcr.io/v2/ingmarstein/paperless-ngx"
-    sha256 cellar: :any, arm64_tahoe:  "bbf40686c0b02cc5fa8128044823940a8a9969aeb871ec6af203e36dac2533c7"
-    sha256 cellar: :any, x86_64_linux: "bb40797d59e75352ce7920b3f061ae57b4eeed070349df9fb844fac7900e1ca0"
+    sha256 cellar: :any, arm64_tahoe:  "6745cdd815f719257bbf5f2fac918621d44dcc15136c9f78000cf3fc99f12491"
+    sha256 cellar: :any, x86_64_linux: "e970267be1b353096c4f4badfe3674978f8153c26bf410af03b12cb82a5d3d9a"
   end
 
   depends_on "cython" => :build
