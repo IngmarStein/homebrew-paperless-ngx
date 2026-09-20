@@ -3,8 +3,8 @@ class PaperlessNgx < Formula
 
   desc "Scan, index and archive all your physical documents"
   homepage "https://docs.paperless-ngx.com/"
-  url "https://github.com/paperless-ngx/paperless-ngx/releases/download/v3.2.0/paperless-ngx-v3.2.0.tar.xz"
-  sha256 "8978c0aca4c326155c4de14692e45677f21abf2118247bab5712c5e088b60dfa"
+  url "https://github.com/paperless-ngx/paperless-ngx/releases/download/v3.2.1/paperless-ngx-v3.2.1.tar.xz"
+  sha256 "7391e75706d9dafe84dd2235df12c932c0034a4f453725437d07918eee7a35b8"
   license "GPL-3.0-or-later"
 
   livecheck do
@@ -95,8 +95,8 @@ class PaperlessNgx < Formula
   end
 
   resource "amqp" do
-    url "https://files.pythonhosted.org/packages/79/fc/ec94a357dfc6683d8c86f8b4cfa5416a4c36b28052ec8260c77aca96a443/amqp-5.3.1.tar.gz"
-    sha256 "cddc00c725449522023bad949f70fff7b48f0b1ade74d170a6f10ab044739432"
+    url "https://files.pythonhosted.org/packages/b2/a7/787f067b237d4b3bfefa8d67ead64a7d807feafe85ad516afb284fb1587f/amqp-5.4.0.tar.gz"
+    sha256 "aaa33987dcb6a7893955d3b4f537c5d4755addce1009929e63e5d18c1b51a0a7"
   end
 
   resource "annotated-doc" do
@@ -350,8 +350,8 @@ class PaperlessNgx < Formula
   end
 
   resource "fsspec" do
-    url "https://files.pythonhosted.org/packages/00/78/f34251dadb8f3921264a1d9b8946f5e542014ee2614b285261b4e40e6775/fsspec-2026.7.0.tar.gz"
-    sha256 "c803c40f4cf860b49dea58ee3e1c33cb9c790520e233537e1340049f89b82a88"
+    url "https://files.pythonhosted.org/packages/77/cd/9be253869fc42e764de7f3dedd6969af7d44ff9c3375214a3442a6f3fc08/fsspec-2026.9.0.tar.gz"
+    sha256 "0f08147951c8cb31d844c3547d631053b127863b60be04cf06e121333ee0e2fe"
   end
 
   resource "gotenberg-client" do
@@ -585,8 +585,8 @@ class PaperlessNgx < Formula
   end
 
   resource "multidict" do
-    url "https://files.pythonhosted.org/packages/14/95/989c1b5ca17b72128661530cd6e351a0a83cda9a4d6c036e9ed976c18931/multidict-6.8.0.tar.gz"
-    sha256 "5cd4637ce76312ba1e05eb9c5193fec231f64fee0944e135fa1e951242355b37"
+    url "https://files.pythonhosted.org/packages/e7/59/84b6cad9ddfdd9471db727b0e987c60ecbdb6b206ba265e8c50e74a1ab80/multidict-6.9.0.tar.gz"
+    sha256 "d7d32c0543494efbc9394e2b571725071d08e295993486bc9a43f6f89375ee01"
   end
 
   resource "mypy-extensions" do
@@ -620,8 +620,8 @@ class PaperlessNgx < Formula
   end
 
   resource "ocrmypdf" do
-    url "https://files.pythonhosted.org/packages/4c/9a/f7d7c943e07b0a28cb0958229ac480f3c51b4169ad9df030477f103b298a/ocrmypdf-17.11.0.tar.gz"
-    sha256 "8e41cbba23bba9ce20bc557576211e1829d1beaef00183bacd227b4b9482af87"
+    url "https://files.pythonhosted.org/packages/37/b5/2ffe5431eb7a8e4fb620d30351e06b8f97212800d23145979c459784bea0/ocrmypdf-17.12.1.tar.gz"
+    sha256 "aca73a23a80cf2f46a4c15040b0035203dbf74054b7a0c3a7ee93b05abc555a6"
   end
 
   resource "ollama" do
@@ -654,19 +654,19 @@ class PaperlessNgx < Formula
     sha256 "96bfd431e3577a55a0efd25676968ca4ce8fd5b53f14565f85716ff363889602"
   end
 
-  resource "pi-heif" do
-    url "https://files.pythonhosted.org/packages/6a/a2/70168b601b41bdf5726dfc8dc110eb4052a2e851fed9c9bdae95910e401d/pi_heif-1.4.0.tar.gz"
-    sha256 "e1199d9d41d9ecc877cf3ae7322ff099f6404574f2e62da47590cd4ecb9ec554"
-  end
-
   resource "pikepdf" do
     url "https://files.pythonhosted.org/packages/1c/0e/6e74dd213537b71c945743a4b3112dbb430896ad68b8a6ad22e4468455d4/pikepdf-10.13.0.post1.tar.gz"
     sha256 "4b73f926ebae81f04bf14527af330bd00bb268be767e0f189f7c4c3e4ad7ae0a"
   end
 
+  resource "pillow-heif" do
+    url "https://files.pythonhosted.org/packages/e8/be/0202b6492a225ec0a6cebc615fbf587179a72cf3a7fa91c0753cba7b986f/pillow_heif-1.7.0.tar.gz"
+    sha256 "1caa5a97364665d45056d25be302e586c39df64ee42ce55241e3735e089809ed"
+  end
+
   resource "platformdirs" do
-    url "https://files.pythonhosted.org/packages/89/24/92d90bebedf197eb15b144367ce6fd4ad2de571927cd09dde190a36db8fc/platformdirs-4.11.10.tar.gz"
-    sha256 "9cd351c078ccf7dda1fdc5f8ccb9d8f5258984c63990e6df3627dde0b70b51d0"
+    url "https://files.pythonhosted.org/packages/f8/13/f870dd0b42690138e4e37a76b5138e5690ed4365a77071bb092d59037da0/platformdirs-4.11.11.tar.gz"
+    sha256 "b0befe8a90759e4a9a8b9820d434ae226a6549063210b596da0038a7a05aede4"
   end
 
   resource "pluggy" do
@@ -675,8 +675,8 @@ class PaperlessNgx < Formula
   end
 
   resource "portalocker" do
-    url "https://files.pythonhosted.org/packages/ea/7a/6371904c17aba3c455eda47001db923d77ba02a858919424d52f56f1e618/portalocker-4.3.2.tar.gz"
-    sha256 "8de4a1330f55b3c9a1d50ab1b70a765f2f136d6399ae206411117ed98c3b8e2b"
+    url "https://files.pythonhosted.org/packages/81/cd/d2a23fc80c26f539ac77e7d61bd5e4af5d0b3a09a78ac4c716eead345129/portalocker-4.4.0.tar.gz"
+    sha256 "90c0df939d4ffba121f8e925bbf98ecea8b9381718666ab871a226938d2b63b2"
   end
 
   resource "prometheus-client" do
@@ -695,13 +695,13 @@ class PaperlessNgx < Formula
   end
 
   resource "psycopg" do
-    url "https://files.pythonhosted.org/packages/72/73/8fb739d0f6bba247b9b93c9840c402a4f88545be5f1d4b02b23366371c00/psycopg-3.3.5.tar.gz"
-    sha256 "d0a3d9ccf5788af054cbd745278cb02401b5c312aeaafbf2c6144460aec47da4"
+    url "https://files.pythonhosted.org/packages/76/26/3ea4ca5eaea1c0debcdf7ee7c1613fbe721dc27a03c461c0817ffd8a0601/psycopg-3.3.6.tar.gz"
+    sha256 "c081f2250df751a943036e42db6df4571c66cd0aabe8291a7a506512b12007d2"
   end
 
   resource "psycopg-pool" do
-    url "https://files.pythonhosted.org/packages/90/82/7a23d26039827ecd4ebe93905651029ddd307c5182ad59296dfb6f67b528/psycopg_pool-3.3.1.tar.gz"
-    sha256 "b10b10b7a175d5cc1592147dc5b7eec8a9e0834eb3ed2c4a92c858e2f51eb63c"
+    url "https://files.pythonhosted.org/packages/f9/7f/1e54512e817442017efa6f7b4c663bc769abd3ff2b62adb910190fc4731d/psycopg_pool-3.3.2.tar.gz"
+    sha256 "0c70903c7f50cd7173ef0f6364bb7c9271fa3810f5746e058449a77afe579f49"
   end
 
   resource "pygments" do
@@ -810,8 +810,8 @@ class PaperlessNgx < Formula
   end
 
   resource "sentence-transformers" do
-    url "https://files.pythonhosted.org/packages/d9/ef/87681678d0aa91a1e77f0ffdd2e5d900aaf358aac644dd14bead8d95ec4c/sentence_transformers-6.0.1.tar.gz"
-    sha256 "1c3b8d9403f87ad0c879638554f36cc85744f38a6a70d150fd7e964ca0e9935b"
+    url "https://files.pythonhosted.org/packages/c4/a1/53ae87971817e2d8370f8e79b843a881be33ab339502d71c5f82ac31f7af/sentence_transformers-6.1.0.tar.gz"
+    sha256 "299025df51550dc1a38f05be27a9b0bf881c4e5e70542b3b7757d05e00aa3868"
   end
 
   resource "setproctitle" do
