@@ -6,6 +6,7 @@ class PaperlessNgx < Formula
   url "https://github.com/paperless-ngx/paperless-ngx/releases/download/v3.2.1/paperless-ngx-v3.2.1.tar.xz"
   sha256 "7391e75706d9dafe84dd2235df12c932c0034a4f453725437d07918eee7a35b8"
   license "GPL-3.0-or-later"
+  revision 1
 
   livecheck do
     url "https://github.com/paperless-ngx/paperless-ngx/releases/latest"
@@ -1193,8 +1194,10 @@ class PaperlessNgx < Formula
     end
   end
 
+  # psycopg-c must be kept at the same version as the `psycopg` resource, as
+  # `brew update-python-resources` cannot update it (see above).
   send(:resource, "psycopg-c") do
-    url "https://files.pythonhosted.org/packages/cb/a0/8feb0ca8c7c20a8b9ac4d46b335ddd57e48e593b714262f006880f34fee5/psycopg_c-3.3.3.tar.gz"
-    sha256 "86ef6f4424348247828e83fb0882c9f8acb33e64d0a5ce66c1b4a5107ee73edd"
+    url "https://files.pythonhosted.org/packages/58/53/bf15aa48cd6f0ad0039b9f48681d2e76e8564d413af47b13fab50dd03555/psycopg_c-3.3.6.tar.gz"
+    sha256 "29c568426ad61c1b702c7d73505c43ca2c9fc5d97a8431d8d9049e731e319ff8"
   end
 end
