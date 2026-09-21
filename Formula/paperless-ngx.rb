@@ -59,7 +59,6 @@ class PaperlessNgx < Formula
   uses_from_macos "libxslt"
   uses_from_macos "zlib"
 
-  # fido2: breaking change in fido2-2.0.0, so pinned to 1.2.0
   # psycopg-c: breaks `brew update-python-resources` (which can't find pg_config),
   # hence a manual addition at the end of the file using `send` to prevent it from being removed.
   pypi_packages exclude_packages: %w[
@@ -68,11 +67,9 @@ class PaperlessNgx < Formula
                   pydantic-core scikit-learn scipy sqlite-vec
                   threadpoolctl torch uvloop
                 ],
-                extra_packages:   ["fido2==1.2.0", "filelock", "fsspec",
-                                   "jinja2", "markupsafe", "mpmath",
-                                   "narwhals", "networkx",
-                                   "psycopg-pool", "psycopg",
-                                   "sympy", "typing-extensions"]
+                extra_packages:   %w[filelock fsspec jinja2 markupsafe mpmath
+                                     narwhals networkx psycopg-pool psycopg
+                                     sympy typing-extensions]
 
   resource "aiohappyeyeballs" do
     url "https://files.pythonhosted.org/packages/ce/f4/eec0465c2f67b2664688d0240b3212d5196fd89e741df67ddb81f8d35658/aiohappyeyeballs-2.7.1.tar.gz"
@@ -315,8 +312,8 @@ class PaperlessNgx < Formula
   end
 
   resource "fido2" do
-    url "https://files.pythonhosted.org/packages/eb/cc/4529123364d41f342145f2fd775307eaed817cd22810895dea10e15a4d06/fido2-1.2.0.tar.gz"
-    sha256 "e39f95920122d64283fda5e5581d95a206e704fa42846bfa4662f86aa0d3333b"
+    url "https://files.pythonhosted.org/packages/ba/ea/6f08c354b7aeb8019249d46a86c2153f8218499cced4d21bf16b6d49fc16/fido2-2.2.1.tar.gz"
+    sha256 "85787428a94c3f8eaf72f0ff30afba983b559a1b1b795c93318c81b4ad4062c4"
   end
 
   resource "filelock" do
