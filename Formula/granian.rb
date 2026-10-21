@@ -3,8 +3,8 @@ class Granian < Formula
 
   desc "Rust HTTP server for Python ASGI/RSGI/WSGI applications"
   homepage "https://github.com/emmett-framework/granian"
-  url "https://files.pythonhosted.org/packages/46/6e/7002545a24aa0652c2ea00e626563379316b713ef1a09c2db5eacc109a41/granian-2.8.4.tar.gz"
-  sha256 "15e4f240dda62ca1bc9d84b264a25503812481ac60dfbedd784a3a25de110436"
+  url "https://files.pythonhosted.org/packages/e2/63/c2548102956296ee0f8671291dd5a6f3f3dc2fc7c4e62e0b86e3be6de571/granian-2.8.5.tar.gz"
+  sha256 "032588689e2d524d633fcb088ee54fad4c5655d0af1a75058d5b4240be4f6864"
   license "BSD-3-Clause"
 
   bottle do
@@ -29,8 +29,8 @@ class Granian < Formula
   end
 
   resource "uvloop" do
-    url "https://files.pythonhosted.org/packages/06/f0/18d39dbd1971d6d62c4629cc7fa67f74821b0dc1f5a77af43719de7936a7/uvloop-0.22.1.tar.gz"
-    sha256 "6c84bae345b9147082b17371e3dd5d42775bddce91f885499017f4607fdaf39f"
+    url "https://files.pythonhosted.org/packages/fa/42/02c739ce85fb2ee8d99212c61417da8140c6b87e9d97c430bea520d76044/uvloop-0.23.0.tar.gz"
+    sha256 "28d160f51ab4da3b187063652e643dea6831072add4adc1e6d62afbe73b6be27"
   end
 
   def python3
