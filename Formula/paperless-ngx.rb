@@ -3,8 +3,8 @@ class PaperlessNgx < Formula
 
   desc "Scan, index and archive all your physical documents"
   homepage "https://docs.paperless-ngx.com/"
-  url "https://github.com/paperless-ngx/paperless-ngx/releases/download/v3.3.3/paperless-ngx-v3.3.3.tar.xz"
-  sha256 "114e10456e03106b0abefc6bac17335349d6db22fa7b80c2c2234a54746301fc"
+  url "https://github.com/paperless-ngx/paperless-ngx/releases/download/v3.3.4/paperless-ngx-v3.3.4.tar.xz"
+  sha256 "21adc0f1b9966605bde9d097b366ea65bd86ebe406b649e21cfe04356307a0c2"
   license "GPL-3.0-or-later"
 
   livecheck do
@@ -187,8 +187,8 @@ class PaperlessNgx < Formula
   end
 
   resource "concurrent-log-handler" do
-    url "https://files.pythonhosted.org/packages/4c/55/cf8be5f2656a81eb96c2c5e879a9a7d96ffcc7bea49e9d69bd66d4abfcd7/concurrent_log_handler-0.9.30.tar.gz"
-    sha256 "163c97f72efce386065bf58b9d73a17c45f6d626c067c5f1fdb442184ee4c435"
+    url "https://files.pythonhosted.org/packages/51/e8/1f74620f511493a3e89b5dbfe9fccd55e6fa1de45ecc91bb1d6f5058acb0/concurrent_log_handler-0.9.31.tar.gz"
+    sha256 "2f973d574f083e5692dfef471931f416daf274bbde8b430ed5d9796c532b97cd"
   end
 
   resource "dataclasses-json" do
@@ -262,8 +262,8 @@ class PaperlessNgx < Formula
   end
 
   resource "django-guardian" do
-    url "https://files.pythonhosted.org/packages/83/ae/5d211238341c393cd8a3ca916acb45bacd5141bd438cc7dbe23d8decab83/django_guardian-3.5.1.tar.gz"
-    sha256 "05e96e729dfaaeea1f938ba475062b4b2b07d4193bbfaa3ef23611336d122ca1"
+    url "https://files.pythonhosted.org/packages/84/ed/d31c3befa315d8cf52efea39078ab4871b866f03dddfa01f2ab630a8182d/django_guardian-3.5.2.tar.gz"
+    sha256 "ca14b7c9cc37bc852f3749f8a998a76cfd0ebbd66ac85726ef331289a712d389"
   end
 
   resource "django-multiselectfield" do
@@ -357,18 +357,18 @@ class PaperlessNgx < Formula
   end
 
   resource "griffe" do
-    url "https://files.pythonhosted.org/packages/07/20/8446877884b2189cddf1304fd376d9bde2d1a6caf77e3980c5cdf5959245/griffe-2.3.2.tar.gz"
-    sha256 "8625bf98dbb02edb291aef77f2f1a17ae6c62d32a764f5bfed009e6010b2d538"
+    url "https://files.pythonhosted.org/packages/a0/8a/fc3b9c9ebe3aa09490fcf1d24a0f8bebb88e5781abbc7506848644648aec/griffe-2.4.0.tar.gz"
+    sha256 "3bfcbe946a5a457d14d51cc5bd77e0b772f87821b419ca76bd1b1f95371f2afa"
   end
 
   resource "griffecli" do
-    url "https://files.pythonhosted.org/packages/92/9a/32ae6bc0adc178e22e567e810e9c2e50956652574b9f07cd438a35de88d8/griffecli-2.3.2.tar.gz"
-    sha256 "d9daf7aaef8ac38fb29680a3397cc66300f3fc17c68c909a26446f06df0b44dd"
+    url "https://files.pythonhosted.org/packages/ac/5e/fc21ba12bdb8b2217ab420c811d61c0cc5d98c6875327a2a9fae016fabab/griffecli-2.4.0.tar.gz"
+    sha256 "1f58718b6abb807afa359b8855ff81cfb2b774fe4d497924661c1aa17f5574aa"
   end
 
   resource "griffelib" do
-    url "https://files.pythonhosted.org/packages/2b/27/b55f1a5278918be765fb2fd8b20966bc72bbdd3f789f031937cceea7834a/griffelib-2.3.2.tar.gz"
-    sha256 "df00c7a0dee3d86268d76788997a1859272cb1fb7b865658e043d2c0c3d52e60"
+    url "https://files.pythonhosted.org/packages/2e/5f/6d93df326cbf8f9f7276be77f83c81a9c061f479abdd81f9bbec197d4b29/griffelib-2.4.0.tar.gz"
+    sha256 "a277a462c56ff4479efe5cbcb4f882dc9a63cfa5ab6404a3e60957c6c8d2f7c9"
   end
 
   resource "h11" do
@@ -402,8 +402,8 @@ class PaperlessNgx < Formula
   end
 
   resource "httpcore2" do
-    url "https://files.pythonhosted.org/packages/30/ff/b53af1b49bb2cb5fa97c92215614b173ca5c1a99ded80e2d52f15a94fa6d/httpcore2-2.14.0.tar.gz"
-    sha256 "4f57a1a8249fe6af589d935cfd456f1d13bbdcb0f0fc72af9142368fc94811d7"
+    url "https://files.pythonhosted.org/packages/c0/61/afa9d6b7452f9eca73f73d45324eb0bb52f098fd5e6049bf6b8263be9b4e/httpcore2-2.16.0.tar.gz"
+    sha256 "c72cd0413563b17e1cd8354677dff887466f8ec2551679759e93126534428643"
   end
 
   resource "httpx" do
@@ -417,8 +417,8 @@ class PaperlessNgx < Formula
   end
 
   resource "httpx2" do
-    url "https://files.pythonhosted.org/packages/e8/67/58353f1848b4ba568e1ec22ea1e0d8e039f0bca5fde7e2d1f07739fd83e7/httpx2-2.14.0.tar.gz"
-    sha256 "47ad61a3c40282cd8d0dc96311531f00f5bfc71a066c6fe3b36d8f63fb9e4f6e"
+    url "https://files.pythonhosted.org/packages/43/73/5ca2cedf5e4e50423d1c258877865a6b62793633b561c58499f8aeb33b7e/httpx2-2.16.0.tar.gz"
+    sha256 "0d54c98128e8f2ff7fbbde0fca8c359e5f032edeaaaac443cdb7f31f685bcd7f"
   end
 
   resource "huggingface-hub" do
@@ -547,8 +547,8 @@ class PaperlessNgx < Formula
   end
 
   resource "llama-index-workflows" do
-    url "https://files.pythonhosted.org/packages/1d/42/d4e1b004a041fcbad1e3acc804090a28161358ac567b0c74be2a3eef760c/llama_index_workflows-2.26.0.tar.gz"
-    sha256 "1aa685b678acbbd0a01a22e4d73aecd374cd12f923cf12ea83c5264f68bafa16"
+    url "https://files.pythonhosted.org/packages/56/bc/186391e029c11d8288a3f365736813044dbff8123c9df9b8dd9eea5f8f3e/llama_index_workflows-2.26.1.tar.gz"
+    sha256 "bd2abd7c3730c17922fff7ba4f6302727d1874718870fbf615705bf3d7361b87"
   end
 
   resource "lxml" do
@@ -612,8 +612,8 @@ class PaperlessNgx < Formula
   end
 
   resource "nltk" do
-    url "https://files.pythonhosted.org/packages/e0/e6/fe51d2bb1a3b446f59c5c8165999a9fee208bc346af90a7cbf7657bc0d75/nltk-3.10.3.tar.gz"
-    sha256 "bb9327a461c3811c2fa4900e03840401f2126adfb30c0072827c433bd2444ea4"
+    url "https://files.pythonhosted.org/packages/3a/cb/bbaa9be58e95d21729c6b9194376610230e0755f6de0bf38b6acc0dce079/nltk-3.10.4.tar.gz"
+    sha256 "44679f4e9220abfd496d2c8cdb22f8425ccbe557604f9aa5cacb1c44003dabc1"
   end
 
   resource "oauthlib" do
@@ -667,8 +667,8 @@ class PaperlessNgx < Formula
   end
 
   resource "platformdirs" do
-    url "https://files.pythonhosted.org/packages/b7/89/dfd269de936e76319cf27787d9eaaca513491f635d49b0fbe7cdb6d3bf6f/platformdirs-4.13.4.tar.gz"
-    sha256 "dd96496961684a7f42041923f842ec7494e09f5e87aded99117e1109cd40570e"
+    url "https://files.pythonhosted.org/packages/58/e6/d0abbb256b44e6a05748c6942511ff67db8dbb068de0c35b24bf1b395b09/platformdirs-4.13.5.tar.gz"
+    sha256 "05831adf87d392760f4b5c3a0a95579ab5a10b18b9b9bd43680dcb47544788a0"
   end
 
   resource "pluggy" do
@@ -812,8 +812,8 @@ class PaperlessNgx < Formula
   end
 
   resource "sentence-transformers" do
-    url "https://files.pythonhosted.org/packages/9d/59/867381b1414a975da6c9953f48a07c05cb0629305e2d37c9bcc9764367b2/sentence_transformers-5.7.0.tar.gz"
-    sha256 "fd8c8fc35e6323631dff9f3760969ebf7980dc3cfda0ab1354bc6a774cc0e5d8"
+    url "https://files.pythonhosted.org/packages/7f/66/635443b9b1d7ea618c4699c8ad4c43b022ceac0c0a1dc4404b7597b38754/sentence_transformers-6.2.0.tar.gz"
+    sha256 "1e3cd8796ab7bcad4cfa2f51e2083d8b37b15d6b68e6fa6b91a147c67380574d"
   end
 
   resource "setproctitle" do
@@ -837,8 +837,8 @@ class PaperlessNgx < Formula
   end
 
   resource "sqlalchemy" do
-    url "https://files.pythonhosted.org/packages/08/bb/28e3106ee586e5b2f5ecf211eec1348055f0f926314b13fe23b9cffa9039/sqlalchemy-2.1.5.tar.gz"
-    sha256 "0df76cf1ca680ad745bd378a6299a058611a8a784eeaeb4ed78ad4a0b7ce2003"
+    url "https://files.pythonhosted.org/packages/36/dc/9addbf490110b5727380059ee542ad8353bdcee45a37ba6a5e0976966ae0/sqlalchemy-2.1.6.tar.gz"
+    sha256 "499eae5c9051efe96cb9a73ec2fbde8ffa4186f102b9094ebab8fcc9d3b99f52"
   end
 
   resource "sqlparse" do
@@ -882,8 +882,8 @@ class PaperlessNgx < Formula
   end
 
   resource "tornado" do
-    url "https://files.pythonhosted.org/packages/06/61/53d562a57b28c08eda40b258c0f975e360541943ad7c7bef897a40caafda/tornado-6.5.10.tar.gz"
-    sha256 "a6b1ccd08c04b4a06fb5aeb381be99de5ad1e5375c1785e31d78c880feb57687"
+    url "https://files.pythonhosted.org/packages/d0/02/5f549b1ad5da6267ed1e1fac2eef69257b1979cc812497002499b7895ff9/tornado-6.6.tar.gz"
+    sha256 "34c4aa916d7f2b2d5cadee2c6850f5a4a7f3d688cbf58399ea9bd3057af4abd5"
   end
 
   resource "tqdm" do
@@ -892,8 +892,8 @@ class PaperlessNgx < Formula
   end
 
   resource "transformers" do
-    url "https://files.pythonhosted.org/packages/32/03/2e8d6da6a582a0fdbaa7af9c0dab72dac113e6e3ea3b98d6ed67248322cc/transformers-5.20.1.tar.gz"
-    sha256 "25b30879e4c243f00630c1079171ede6d4f6bf76e68f978acd47628a640bc8a0"
+    url "https://files.pythonhosted.org/packages/8c/4e/3cd6f08cc84ee612d40f3cdb1649475e7c997f2d5cbd95ade8780708af62/transformers-5.20.2.tar.gz"
+    sha256 "080871e061546d720be57f5846fce426f46b44d61574907cc7404c2cba49d180"
   end
 
   resource "truststore" do
@@ -957,8 +957,8 @@ class PaperlessNgx < Formula
   end
 
   resource "wcwidth" do
-    url "https://files.pythonhosted.org/packages/f0/b4/7830542634bb2d3e62aa3b586a72d5b3b6c91c3168929e7000ef3fed041d/wcwidth-0.9.2.tar.gz"
-    sha256 "ae0ef90b90f6af38b54f1fe6d58662ec33b3cb4b8391958a62416d654231727b"
+    url "https://files.pythonhosted.org/packages/69/4a/82d61476a1ccc20d43d0805724c5de4baa4971131a8db1816705ef53fe16/wcwidth-0.9.3.tar.gz"
+    sha256 "dfe7cfbd4cb59db9fe0931bd6091ab4a95b3acc5d56bfb50fa9fef0ccba5dc5c"
   end
 
   resource "whitenoise" do
