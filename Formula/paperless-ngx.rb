@@ -7,15 +7,11 @@ class PaperlessNgx < Formula
   sha256 "21adc0f1b9966605bde9d097b366ea65bd86ebe406b649e21cfe04356307a0c2"
   license "GPL-3.0-or-later"
 
+  revision 1
+
   livecheck do
     url "https://github.com/paperless-ngx/paperless-ngx/releases/latest"
     strategy :github_releases
-  end
-
-  bottle do
-    root_url "https://ghcr.io/v2/ingmarstein/paperless-ngx"
-    sha256 cellar: :any, arm64_tahoe:  "285bfe0f74522d62f468897414026d41d60a7718e587227bbc895de5463f6514"
-    sha256 cellar: :any, x86_64_linux: "3c92bb9794b7f386defa30a8452fd4bada5d4614fcb8dc2e3a196b62144d31bf"
   end
 
   depends_on "cmake" => :build
@@ -1068,6 +1064,15 @@ class PaperlessNgx < Formula
       "paperless-webserver" => <<~EOS,
         echo "Running database migrations..."
         "#{python_executable}" "#{manage_py_script}" migrate --no-input --skip-checks
+        # Stand in for the docker image's init-search-index and init-llmindex-migrate
+        # oneshots, which run after init-migrations and before any svc-* service.
+        # A schema or PAPERLESS_SEARCH_LANGUAGE change makes open_or_rebuild_index()
+        # wipe the search index, and reindex is the only thing that refills it; without
+        # this the index stays empty and only documents saved afterwards are findable.
+        echo "Checking search index..."
+        "#{python_executable}" "#{manage_py_script}" document_index reindex --if-needed --no-progress-bar
+        echo "Checking LLM index migrations..."
+        "#{python_executable}" "#{manage_py_script}" document_llmindex migrate
         exec "#{python_executable}" -m granian \\
           --interface asginl \\
           --host "${PAPERLESS_INTERFACE:-127.0.0.1}" \\
