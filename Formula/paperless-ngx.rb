@@ -14,6 +14,12 @@ class PaperlessNgx < Formula
     strategy :github_releases
   end
 
+  bottle do
+    root_url "https://ghcr.io/v2/ingmarstein/paperless-ngx"
+    sha256 cellar: :any, arm64_tahoe:  "43e78c9839494526457c3fdb727f28f1c8d7840f07b0140aa2dd36b37c94996f"
+    sha256 cellar: :any, x86_64_linux: "4f7e18149c4aa1dc07d2adedd356b6bd587462888ccad64397caf9b3f49deb19"
+  end
+
   depends_on "cmake" => :build
   depends_on "cython" => :build
   depends_on "maturin" => :build
