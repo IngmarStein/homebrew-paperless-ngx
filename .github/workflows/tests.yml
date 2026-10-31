@@ -6,6 +6,12 @@ on:
       - main
   pull_request:
 
+permissions: {}
+
+defaults:
+  run:
+    shell: bash -xeuo pipefail {0}
+
 jobs:
   test-bot:
     strategy:
@@ -13,9 +19,11 @@ jobs:
         os: [ macos-26 ]
         include:
           - os: ubuntu-latest
-            container: ghcr.io/homebrew/brew:main
+            container:
+              image: ghcr.io/homebrew/brew:main
+              options: --privileged
     runs-on: ${{ matrix.os }}
-    container: ${{ matrix.container }}
+    container: ${{ fromJSON(toJSON(matrix.container)) }} # zizmor: ignore[unpinned-images]
     permissions:
       actions: read
       checks: read
@@ -27,7 +35,7 @@ jobs:
         id: set-up-homebrew
         uses: Homebrew/actions/setup-homebrew@main
         with:
-          token: ${{ github.token }}
+          token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Cache Homebrew Bundler RubyGems
         uses: actions/cache@v6
@@ -61,7 +69,7 @@ jobs:
         id: base64-encode
         if: github.event_name == 'pull_request'
         env:
-          TOKEN: ${{ github.token }}
+          TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           base64_token=$(echo -n "${TOKEN}" | base64 | tr -d "\n")
           echo "::add-mask::${base64_token}"
