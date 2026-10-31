@@ -6,13 +6,20 @@ on:
     - cron: "0 */3 * * *"
   workflow_dispatch:
 
-permissions:
-  contents: write
-  pull-requests: write
+permissions: {}
+
+# Deliberately no `-x`: the token is embedded in a base64 `http.extraheader`
+# below and would otherwise be echoed into the build log unmasked.
+defaults:
+  run:
+    shell: bash -euo pipefail {0}
 
 jobs:
   autobump:
-    runs-on: macos-latest
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
     steps:
       - name: Set up Homebrew
         id: set-up-homebrew
