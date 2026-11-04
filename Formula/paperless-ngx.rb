@@ -61,11 +61,14 @@ class PaperlessNgx < Formula
 
   # psycopg-c: breaks `brew update-python-resources` (which can't find pg_config),
   # hence a manual addition at the end of the file using `send` to prevent it from being removed.
+  # torch is pinned to the series paperless-ngx requires: `brew update-python-resources` resolves
+  # the excluded packages separately, and an unpinned `torch` resolves to a newer version whose
+  # CUDA dependencies do not match those of the `torch` used to resolve the resources.
   pypi_packages exclude_packages: %w[
                   certifi cffi click cryptography granian joblib
                   numpy pillow pycparser psycopg-c pydantic
                   pydantic-core scikit-learn scipy sqlite-vec
-                  threadpoolctl torch uvloop
+                  threadpoolctl torch==2.14.* uvloop
                 ],
                 extra_packages:   %w[filelock fsspec jinja2 markupsafe mpmath
                                      narwhals networkx psycopg-pool psycopg
