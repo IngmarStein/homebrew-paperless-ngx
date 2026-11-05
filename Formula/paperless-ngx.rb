@@ -18,6 +18,10 @@ class PaperlessNgx < Formula
     sha256 cellar: :any, x86_64_linux: "a4ad4b3d2ab44a1d2183aa680ed423dd3398d451f03de86347d6dfc7ff9b1e29"
   end
 
+  # `turbohtml` builds with meson and requires the `patchelf` Python package on Linux,
+  # whose sdist bootstraps with autotools.
+  depends_on "autoconf" => :build
+  depends_on "automake" => :build
   depends_on "cmake" => :build
   depends_on "cython" => :build
   depends_on "maturin" => :build
