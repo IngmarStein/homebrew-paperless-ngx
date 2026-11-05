@@ -14,8 +14,8 @@ class PaperlessNgx < Formula
 
   bottle do
     root_url "https://ghcr.io/v2/ingmarstein/paperless-ngx"
-    sha256 cellar: :any, arm64_tahoe:  "d84ba0e4faf7f6c099a6bce2f4c9e8651de02983a9df4ae4a6324c72a7f5533a"
-    sha256 cellar: :any, x86_64_linux: "a4ad4b3d2ab44a1d2183aa680ed423dd3398d451f03de86347d6dfc7ff9b1e29"
+    sha256 cellar: :any, arm64_tahoe:  "d7ae60f48c8684c20bf977275f2976cec66ecb88d1a8e3fbeca6a451003c192e"
+    sha256 cellar: :any, x86_64_linux: "b13dbdca4a93dafd04cf0f81d50c2e186147b55791cae3b90ee0db1590357a45"
   end
 
   # `turbohtml` builds with meson and requires the `patchelf` Python package on Linux,
