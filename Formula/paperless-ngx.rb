@@ -6,6 +6,7 @@ class PaperlessNgx < Formula
   url "https://github.com/paperless-ngx/paperless-ngx/releases/download/v3.5.0/paperless-ngx-v3.5.0.tar.xz"
   sha256 "add8c6a79916a0e28581d0987ef9442719df50c89d893b6efcfadca7235bfe64"
   license "GPL-3.0-or-later"
+  revision 1
 
   livecheck do
     url "https://github.com/paperless-ngx/paperless-ngx/releases/latest"
@@ -1167,6 +1168,13 @@ class PaperlessNgx < Formula
   end
 
   test do
+    # `psycopg-c` is added manually, so check it matches `psycopg`: importing
+    # a mismatched C extension fails on attributes added in a later release.
+    versions = shell_output(<<~EOS).split
+      #{libexec}/bin/python -c 'import importlib.metadata as m; print(m.version("psycopg"), m.version("psycopg-c"))'
+    EOS
+    assert_equal 1, versions.uniq.length
+
     port = free_port
     ENV["PAPERLESS_SECRET_KEY"] = "test-secret-key-do-not-use-in-production"
     ENV["PAPERLESS_MEDIA_ROOT"] = testpath/"media"
@@ -1207,7 +1215,7 @@ class PaperlessNgx < Formula
   # psycopg-c must be kept at the same version as the `psycopg` resource, as
   # `brew update-python-resources` cannot update it (see above).
   send(:resource, "psycopg-c") do
-    url "https://files.pythonhosted.org/packages/58/53/bf15aa48cd6f0ad0039b9f48681d2e76e8564d413af47b13fab50dd03555/psycopg_c-3.3.6.tar.gz"
-    sha256 "29c568426ad61c1b702c7d73505c43ca2c9fc5d97a8431d8d9049e731e319ff8"
+    url "https://files.pythonhosted.org/packages/bc/2b/09dece13af82681cad81a70d21da76ecf37bc280a15693a3fe966751649f/psycopg_c-3.3.9.tar.gz"
+    sha256 "591fcbcb40e089235a7f096b9e887e71ccae78fd337aba198d918e33707c5e01"
   end
 end
