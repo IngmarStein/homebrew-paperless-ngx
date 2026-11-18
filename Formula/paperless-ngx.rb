@@ -6,7 +6,7 @@ class PaperlessNgx < Formula
   url "https://github.com/paperless-ngx/paperless-ngx/releases/download/v3.5.0/paperless-ngx-v3.5.0.tar.xz"
   sha256 "add8c6a79916a0e28581d0987ef9442719df50c89d893b6efcfadca7235bfe64"
   license "GPL-3.0-or-later"
-  revision 1
+  revision 2
 
   livecheck do
     url "https://github.com/paperless-ngx/paperless-ngx/releases/latest"
